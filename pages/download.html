@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Update</title>
+    <style>
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            text-align: center;
+            color: #FFF;
+            background: linear-gradient(0deg, #1a1a1a, #000);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        #updateButton1,
+        #updateButton2 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 40px;
+            cursor: pointer;
+            transition: background-color 0.5s;
+        }
+
+        #updateButton2 {
+            background-color: #008CBA;
+            margin-left: 20px;
+        }
+
+        #updateButton1:hover,
+        #updateButton2:hover {
+            background-color: #45a049;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes swipeUp {
+            from {
+                transform: translateY(20px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            animation: fadeIn 1s ease;
+        }
+
+        window.addEventListener('scroll', function () {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.body.style.transition = 'transform 0.5s';
+                document.body.style.transform = 'translateY(-20px)';
+            } else {
+                document.body.style.transition = 'transform 0.5s';
+                document.body.style.transform = 'translateY(0)';
+            }
+        });
+    </style>
+</head>
+
+<body>
+
+    <h1>App Update</h1>
+
+    <p>App Name: HTML Editor PRO</p>
+    <p>Version: 9.2</p>
+
+    <button id="updateButton1" onclick="updateViaGalaxyStore()">Update using Galaxy Store</button>
+    <button id="updateButton2" onclick="directAPKDownload()">Direct APK Download</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if the device is a Samsung device
+            var isSamsung = /Samsung/.test(navigator.userAgent);
+
+            // Highlight button 1 if the device is Samsung
+            if (isSamsung) {
+                document.getElementById('updateButton1').style.backgroundColor = '#FFD700';
+            }
+        });
+
+        function updateViaGalaxyStore() {
+            window.location.href = 'https://html-editor-pro.openinapp.co/update';
+        }
+
+        function directAPKDownload() {
+            window.location.href = 'https://com-protecgames-htmleditor.en.uptodown.com/android';
+        }
+    </script>
+</body>
+
+</html>

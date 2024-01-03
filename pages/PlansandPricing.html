@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plans and Pricing</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .plan {
+      background-color: #F3F4F6;
+      border-radius: 1rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+    }
+
+    .plan:hover {
+      transform: translateY(-5px);
+    }
+
+    .plan h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .plan ul {
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #667eea;
+      color: #fff;
+      border-radius: 0.25rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #764ba2;
+    }
+
+    .popup {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: #764ba2;
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 0.25rem;
+      animation: popup-animation 1s ease-in-out infinite;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .popup.show {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    @keyframes popup-animation {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="plan">
+        <h2>Free Plan</h2>
+        <ul>
+          <li>File upload and project hosting</li>
+          <li>Code highlighting</li>
+          <li>AI code writer</li>
+          <li>Code preservation</li>
+          <li>Edit collab file (read-only)</li>
+          <li>Ads</li>
+        </ul>
+        <div class="text-center">
+          <a href="https://com-protecgames-htmleditor.en.uptodown.com/android" class="cta-button" onclick="showPopup()">Download App</a>
+        </div>
+      </div>
+      <div class="plan">
+        <h2>Premium Plan</h2>
+        <ul>
+          <li>All features of Free Plan</li>
+          <li>No ads</li>
+          <li>Unlimited new collab file creation</li>
+        </ul>
+        <div class="text-center">
+          <a href="https://com-protecgames-htmleditor.en.uptodown.com/android" class="cta-button" onclick="showPopup()">Download App</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<a href="https://com-protecgames-htmleditor.en.uptodown.com/android">
+  <div id="popup" class="popup">
+    <p>Click here to download the app!</p></a>
+  </div>
+
+  <script>
+    function showPopup() {
+      const popup = document.getElementById('popup');
+      popup.classList.add('show');
+      setTimeout(() => {
+        popup.classList.remove('show');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>App Features</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .feature {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: slideIn 0.5s ease forwards;
+    }
+    
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    .icon {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #333;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 40px;
+      margin-right: 30px;
+    }
+    
+    .content {
+      flex: 1;
+    }
+    
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1>App Features</h1>
+  
+  <div class="feature">
+    <div class="icon">1</div>
+    <div class="content">
+      <h2>Online Collaboration</h2>
+      <p>Real-time coding collaboration with other users to work on projects together.</p>
+    </div>
+  </div>
+  
+  <div class="feature">
+    <div class="icon">2</div>
+    <div class="content">
+      <h2>Website and Project Hosting</h2>
+      <p>Easily host your websites and projects directly from the app for convenient access.</p>
+    </div>
+  </div>
+  
+  <div class="feature">
+    <div class="icon">3</div>
+    <div class="content">
+      <h2>Project Sharing</h2>
+      <p>Effortlessly share your coding projects with others for collaboration or demonstration.</p>
+    </div>
+  </div>
+  
+  <div class="feature">
+    <div class="icon">4</div>
+    <div class="content">
+      <h2>Syntax Highlighting</h2>
+      <p>Enhanced code readability with syntax highlighting for different programming languages.</p>
+    </div>
+  </div>
+  
+  <div class="feature">
+    <div class="icon">5</div>
+    <div class="content">
+      <h2>Code Preservation</h2>
+      <p>Automatic code preservation to ensure your progress is always saved and can be resumed.</p>
+    </div>
+  </div>
+  <div class="feature">
+    <div class="icon">6</div>
+    <div class="content">
+      <h2>Web Inspect</h2>
+      <p>View source code of any website in app.</p>
+    </div>
+  </div>
+  <div class="feature">
+    <div class="icon">7</div>
+    <div class="content">
+      <h2>Desktop View</h2>
+      <p>View output in both mobile or desktop mode</p>
+    </div>
+  </div>
+  <script>
+    window.onload = function() {
+      var features = document.querySelectorAll('.feature');
+      for (var i = 0; i < features.length; i++) {
+        features[i].style.animationDelay = i * 0.2 + 's';
+      }
+    };
+  </script>
+</body>
+</html>
