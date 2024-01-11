@@ -1,10 +1,10 @@
 {
-  "Visibility": "VISIBLE",
+  "Visibility": "INVISIBLE",
   "Title": "New Version Available",
   "Description": "Go with the change and download latest version",
   "MainTextButton": "UPDATE",
   "Cancelable": false,
   "CancelButtonText": "Not Now",
   "DownloadLink": "https://html-editor-pro.vercel.app/pages/download.html",
-  "Version": "10"
+  "Version": "10.0"
 }
