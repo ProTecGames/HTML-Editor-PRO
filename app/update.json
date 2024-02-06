@@ -1,10 +1,10 @@
 {
-  "Visibility": "INVISIBLE",
-  "Title": "Survey alert",
-  "Description": "We're collecting feedbacks from our users to make app more personal.",
-  "MainTextButton": "Join Survey",
-  "Cancelable": true,
-  "CancelButtonText": "Not Now",
-  "DownloadLink": "https://forms.gle/iG7V5hZYiwS5k7HVA",
-  "Version": "10.0"
+  "Visibility": "VISIBLE",
+  "Title": "v10.2 Released",
+  "Description": "Fix your Bugs with the new Bug Hunter.",
+  "MainTextButton": "Update Now",
+  "Cancelable": false,
+  "CancelButtonText": "",
+  "DownloadLink": "https://html-editor-pro.vercel.app/pages/download.html",
+  "Version": "10.2"
 }
