@@ -1,11 +1,11 @@
-function initPayPalButton(currency) {
+function initPayPalButton() {
   paypal.Buttons({
     createOrder: function(data, actions) {
       return actions.order.create({
         purchase_units: [{
           amount: {
-            value: currency === 'INR' ? '500' : '6',
-            currency_code: currency
+            value: '6',
+            currency_code: 'USD'
           }
         }]
       });
@@ -17,9 +17,9 @@ function initPayPalButton(currency) {
       });
     },
     onError: function(err) {
-  console.error("An error occurred during payment:", err);
-  alert("An error occurred during payment. Please try again.");
-}
+      console.error("An error occurred during payment:", err);
+      alert("An error occurred during payment. Please try again.");
+    }
   }).render('#paypal-button-container');
 }
 
@@ -30,27 +30,4 @@ function sendRequestToBackend(uid) {
     .catch(error => console.error('Error:', error));
 }
 
-function checkUserCountry() {
-  fetch('https://api.ipify.org?format=json')
-    .then(response => response.json())
-    .then(data => {
-      const userIP = data.ip;
-      fetch(`https://ipapi.co/${userIP}/json/`)
-        .then(response => response.json())
-        .then(data => {
-          const userCountry = data.country;
-          const currency = userCountry === 'IN' ? 'INR' : 'USD';
-          initPayPalButton(currency);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          initPayPalButton('USD');
-        });
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      initPayPalButton('USD');
-    });
-}
-
-checkUserCountry();
+initPayPalButton();
