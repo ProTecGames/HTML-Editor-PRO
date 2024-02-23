@@ -1,0 +1,33 @@
+/* styles.css */
+
+/* Hero section styles */
+.hero {
+    background-color: #007bff; /* Blue color */
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero-title {
+    font-size: 3em;
+}
+
+/* Container styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Support message styles */
+#supportMessage {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 9999; /* Ensure it's above other content */
+}
