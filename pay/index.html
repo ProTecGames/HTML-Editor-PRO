@@ -1,30 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pay and Register</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Editor PRO Premium Access</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Pay and Register</h1>
-        <form id="paymentForm">
-            <div class="input-container">
-                <label for="uid">Enter your UID:</label>
-                <input type="text" id="uid" name="uid" required>
-                <span class="help-text">This is your unique ID</span>
-            </div>
-            <div id="paypal-button-container"></div>
-        </form>
-    </div>
+  <div class="container">
+    <h1>HTML Editor PRO Premium Access</h1>
+    <form id="paymentForm">
+      <label for="uid">Enter your UID:</label>
+      <input type="text" id="uid" name="uid" required>
+      <div id="paypal-button-container"></div>
+    </form>
+  </div>
 
-    <div id="supportMessage">
-        <p>For any issues, please email <a href="mailto:protecgamesofficial@gmail.com">protecgamesofficial@gmail.com</a> with a screenshot.</p>
-    </div>
-
-    <script src="https://www.paypal.com/sdk/js?client-id=AcK7tMPp8dzQWjjuujITVqKmWdeJd6hcdHJITavf3p0486t1MfJRU5g6jEb69z2nHHT4NE5zsnOUUHOM"></script>
-    <script src="script.js"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AcK7tMPp8dzQWjjuujITVqKmWdeJd6hcdHJITavf3pO486t1MfJRU5g6jEb69z2nHHT4NE5zsnOUUHOM&currency=INR"></script>
+  <script src="script.js"></script>
 </body>
 </html>

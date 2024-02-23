@@ -1,79 +1,55 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const hero = document.querySelector('.hero');
-    hero.style.backgroundColor = '#007bff';
-});
-
-paypal.Buttons({
+function initPayPalButton(currency) {
+  paypal.Buttons({
     createOrder: function(data, actions) {
-        return actions.order.create({
-            purchase_units: [{
-                amount: {
-                    value: '6.00'
-                }
-            }]
-        });
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: currency === 'INR' ? '500' : '6',
+            currency_code: currency
+          }
+        }]
+      });
     },
     onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-            var uid = document.getElementById('uid').value;
-            appendToAccountsJSON(uid);
-        });
+      return actions.order.capture().then(function(details) {
+        const uid = document.getElementById('uid').value;
+        sendRequestToBackend(uid);
+      });
+    },
+    onError: function(err) {
+      alert("An error occurred during payment. Please try again.");
     }
-}).render('#paypal-button-container');
-
-async function appendToAccountsJSON(uid) {
-    const sha = await getAccountsJsonSha();
-    if (sha) {
-        fetch('https://api.github.com/repos/ProTecGames/HTML-Editor-PRO/contents/app/accounts.json', {
-            method: 'GET',
-            headers: {
-                'Authorization': 'token ' + process.env.GITHUB_ACCESS_TOKEN
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            data["PREMIUM ACCOUNTS"].push(uid);
-            updateAccountsJSON(data, sha);
-            alert("Payment successful! Please take a screenshot for future use.");
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    } else {
-        console.error('Unable to fetch SHA of accounts.json');
-    }
+  }).render('#paypal-button-container');
 }
 
-function updateAccountsJSON(data, sha) {
-    fetch('https://api.github.com/repos/ProTecGames/HTML-Editor-PRO/contents/app/accounts.json', {
-        method: 'PUT',
-        headers: {
-            'Authorization': 'token ' + process.env.GITHUB_ACCESS_TOKEN,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            message: 'Add UID to accounts.json',
-            content: btoa(JSON.stringify(data)),
-            sha: sha
-        })
-    })
+function sendRequestToBackend(uid) {
+  fetch(`https://htmleditorpro.render.com/uid=${uid}`)
+    .then(response => response.text())
+    .then(data => alert(data))
+    .catch(error => console.error('Error:', error));
+}
+
+function checkUserCountry() {
+  fetch('https://api.ipify.org?format=json')
     .then(response => response.json())
     .then(data => {
-        console.log('UID appended successfully:', data);
+      const userIP = data.ip;
+      fetch(`https://ipapi.co/${userIP}/json/`)
+        .then(response => response.json())
+        .then(data => {
+          const userCountry = data.country;
+          const currency = userCountry === 'IN' ? 'INR' : 'USD';
+          initPayPalButton(currency);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          initPayPalButton('USD');
+        });
     })
     .catch(error => {
-        console.error('Error:', error);
+      console.error('Error:', error);
+      initPayPalButton('USD');
     });
 }
 
-function getAccountsJsonSha() {
-    return fetch('https://api.github.com/repos/ProTecGames/HTML-Editor-PRO/contents/app/accounts.json')
-        .then(response => response.json())
-        .then(data => {
-            return data.sha;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            return null;
-        });
-}
+checkUserCountry();
