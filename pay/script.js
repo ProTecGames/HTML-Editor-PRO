@@ -14,6 +14,7 @@ function initPayPalButton() {
       return actions.order.capture().then(function(details) {
         const uid = document.getElementById('uid').value;
         sendRequestToBackend(uid);
+        redirectAfterPayment(uid);
       });
     },
     onError: function(err) {
@@ -28,6 +29,10 @@ function sendRequestToBackend(uid) {
     .then(response => response.text())
     .then(data => alert(data))
     .catch(error => console.error('Error:', error));
+}
+
+function redirectAfterPayment(uid) {
+  window.location.href = `https://cloudy-ruby-threads.cyclic.app/uid=${uid}`;
 }
 
 initPayPalButton();
