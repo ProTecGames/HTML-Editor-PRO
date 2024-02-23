@@ -17,8 +17,9 @@ function initPayPalButton(currency) {
       });
     },
     onError: function(err) {
-      alert("An error occurred during payment. Please try again.");
-    }
+  console.error("An error occurred during payment:", err);
+  alert("An error occurred during payment. Please try again.");
+}
   }).render('#paypal-button-container');
 }
 
