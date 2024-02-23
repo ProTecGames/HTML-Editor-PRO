@@ -1,8 +1,6 @@
-// index.js
-
 document.addEventListener("DOMContentLoaded", function() {
     const hero = document.querySelector('.hero');
-    hero.style.backgroundColor = '#007bff'; // Blue color
+    hero.style.backgroundColor = '#007bff';
 });
 
 paypal.Buttons({
@@ -10,7 +8,7 @@ paypal.Buttons({
         return actions.order.create({
             purchase_units: [{
                 amount: {
-                    value: '6.00' // Payment amount
+                    value: '6.00'
                 }
             }]
         });
@@ -68,7 +66,6 @@ function updateAccountsJSON(data, sha) {
     });
 }
 
-// Function to fetch the SHA value of the accounts.json file
 function getAccountsJsonSha() {
     return fetch('https://api.github.com/repos/ProTecGames/HTML-Editor-PRO/contents/app/accounts.json')
         .then(response => response.json())
