@@ -24,7 +24,7 @@ function initPayPalButton() {
 }
 
 function sendRequestToBackend(uid) {
-  fetch(`https://htmleditorpro.render.com/uid=${uid}`)
+  fetch(`https://htmleditorpro.onrender.com/uid=${uid}`)
     .then(response => response.text())
     .then(data => alert(data))
     .catch(error => console.error('Error:', error));
