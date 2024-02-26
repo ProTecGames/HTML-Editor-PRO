@@ -25,14 +25,14 @@ function initPayPalButton() {
 }
 
 function sendRequestToBackend(uid) {
-  fetch(`https://htmleditorpro.onrender.com/uid=${uid}`)
+  fetch(`https://wild-teal-centipede-wrap.cyclic.app/uid=${uid}`)
     .then(response => response.text())
     .then(data => alert(data))
     .catch(error => console.error('Error:', error));
 }
 
 function redirectAfterPayment(uid) {
-  window.location.href = `https://cloudy-ruby-threads.cyclic.app/uid=${uid}`;
+  window.location.href = `https://wild-teal-centipede-wrap.cyclic.app/uid=${uid}`;
 }
 
 initPayPalButton();
