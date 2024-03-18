@@ -1,10 +1,10 @@
 {
-  "Visibility": "INVISIBLE",
-  "Title": "v10.2 Released",
-  "Description": "Fix your Bugs with the new Bug Hunter.",
+  "Visibility": "VISIBLE",
+  "Title": "v10.4 Released",
+  "Description": "Try the latest release with Image to Code",
   "MainTextButton": "Update Now",
   "Cancelable": false,
   "CancelButtonText": "",
   "DownloadLink": "https://html-editor-pro.vercel.app/pages/download.html",
-  "Version": "10.2"
+  "Version": "10.4"
 }
