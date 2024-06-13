@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #preview {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML Preview</h1>
+    <div id="preview"></div>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        function decodeHTML(html) {
+            const txt = document.createElement("textarea");
+            txt.innerHTML = html;
+            return txt.value;
+        }
+
+        window.onload = function() {
+            const code = getQueryParam('code');
+            if (code) {
+                const decodedCode = decodeURIComponent(code);
+                const safeCode = decodeHTML(decodedCode);
+                document.getElementById('preview').innerHTML = safeCode;
+            } else {
+                document.getElementById('preview').innerText = 'No code provided';
+            }
+        };
+    </script>
+</body>
+</html>
