@@ -1,38 +1,46 @@
-function initPayPalButton() {
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const uidParam = urlParams.get('uid');
+  const uidInput = document.getElementById('uid');
+
+  if (uidParam) {
+      uidInput.value = uidParam;
+      uidInput.disabled = true;
+  }
+
   paypal.Buttons({
-    createOrder: function(data, actions) {
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            value: '6',
-            currency_code: 'USD'
-          }
-        }]
-      });
-    },
-    onApprove: function(data, actions) {
-      return actions.order.capture().then(function(details) {
-        const uid = document.getElementById('uid').value;
-        sendRequestToBackend(uid);
-        redirectAfterPayment(uid);
-      });
-    },
-    onError: function(err) {
-      console.error("An error occurred during payment:", err);
-      alert("An error occurred during payment. Please try again.");
-    }
+      createOrder: function(data, actions) {
+          return actions.order.create({
+              purchase_units: [{
+                  amount: {
+                      value: '6'
+                  },
+                  description: 'HTML Editor PRO -  Payment'
+              }]
+          });
+      },
+      onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+              const uid = uidInput.value;
+              handleSuccess(uid);
+          });
+      },
+      onCancel: function(data) {
+          alert('Payment was canceled');
+      }
   }).render('#paypal-button-container');
-}
+});
 
-function sendRequestToBackend(uid) {
-  fetch(`https://wild-teal-centipede-wrap.cyclic.app/uid=${uid}`)
-    .then(response => response.text())
-    .then(data => alert(data))
-    .catch(error => console.error('Error:', error));
+async function handleSuccess(uid) {
+  try {
+      const response = await fetch(`https://pws-0h89.onrender.com/paid?uid=${uid}`);
+      if (response.ok) {
+          const data = await response.text();
+          console.log('Server response:', data);
+      } else {
+          alert('Failed to send payment result to server');
+      }
+  } catch (error) {
+      console.error('Error:', error);
+  }
 }
-
-function redirectAfterPayment(uid) {
-  window.location.href = `https://wild-teal-centipede-wrap.cyclic.app/uid=${uid}`;
-}
-
-initPayPalButton();
