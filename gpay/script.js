@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             transactionInfo: {
                 totalPriceStatus: 'FINAL',
                 totalPrice: '6.00',
-                currencyCode: 'INR'
+                currencyCode: 'USD'
             },
             merchantInfo: {
                 merchantName: 'Elite Code Club',
