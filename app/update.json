@@ -1,10 +1,10 @@
 {
   "Visibility": "VISIBLE",
-  "Title": "v10.4 Released",
-  "Description": "Try the latest release with Image to Code",
-  "MainTextButton": "Update Now",
-  "Cancelable": false,
-  "CancelButtonText": "",
-  "DownloadLink": "https://html-editor-pro.vercel.app/pages/download.html",
-  "Version": "10.4"
+  "Title": "Premium for FREE",
+  "Description": "Enjoy 1 month premium for free just join us at Play Store by following steps.",
+  "MainTextButton": "Get Now",
+  "Cancelable": true,
+  "CancelButtonText": "Later",
+  "DownloadLink": "https://groups.google.com/u/1/g/html-editor-pro/c/yNctizZ5EIU",
+  "Version": "10.5"
 }
