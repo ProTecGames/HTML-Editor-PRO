@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Ensure Google Pay script is loaded
+    if (typeof google === 'undefined' || !google.payments) {
+        console.error('Google Pay script not loaded');
+        return;
+    }
+
     const urlParams = new URLSearchParams(window.location.search);
     const uidParam = urlParams.get('uid');
     const uidInput = document.getElementById('uid');
@@ -51,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             merchantInfo: {
                 merchantName: 'Elite Code Club',
-                merchantId: 'BCR2DN4TWXA6TZ36' 
+                merchantId: 'BCR2DN4TWXA6TZ36' // Replace with your actual Merchant ID
             }
         };
 
