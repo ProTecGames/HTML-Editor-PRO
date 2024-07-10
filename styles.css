@@ -61,7 +61,7 @@ body {
   }
 }
 
-.features {
+.features, .privacy-policy, .to-do-list, .terms-conditions, .refund-policy, .shipping-policy, .contact-us {
   background-color: #f7fafc;
 }
 
@@ -72,13 +72,3 @@ body {
   border-radius: 0.5rem;
   margin-bottom: 1.5rem;
 }
-
-.privacy-policy {
-  background-color: #f7fafc;
-}
-
-.to-do-list {
-  background-color: #f7fafc;
-}
-
-  
