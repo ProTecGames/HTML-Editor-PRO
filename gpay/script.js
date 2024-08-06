@@ -41,7 +41,7 @@ function getGooglePaymentDataRequest() {
             tokenizationSpecification: {
                 type: 'PAYMENT_GATEWAY',
                 parameters: {
-                    'gateway': 'phonepe',
+                    'gateway': 'yourGatewayName',
                     'gatewayMerchantId': '877725928481595208'
                 }
             }
@@ -53,7 +53,7 @@ function getGooglePaymentDataRequest() {
         transactionInfo: {
             totalPriceStatus: 'FINAL',
             totalPrice: '6.00',
-            currencyCode: 'USA',
+            currencyCode: 'USD',
             countryCode: 'US'
         }
     };
