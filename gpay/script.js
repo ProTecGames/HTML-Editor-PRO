@@ -12,14 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function onGooglePayLoaded() {
-    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'});
+    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'PRODUCTION'});
     const button = paymentsClient.createButton({onClick: onGooglePayButtonClicked});
     document.getElementById('google-pay-button-container').appendChild(button);
 }
 
 function onGooglePayButtonClicked() {
     const paymentDataRequest = getGooglePaymentDataRequest();
-    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'});
+    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'PRODUCTION'});
 
     paymentsClient.loadPaymentData(paymentDataRequest).then(function(paymentData) {
         processPayment(paymentData);
@@ -52,9 +52,9 @@ function getGooglePaymentDataRequest() {
         },
         transactionInfo: {
             totalPriceStatus: 'FINAL',
-            totalPrice: '99.9',
-            currencyCode: 'INR',
-            countryCode: 'IN'
+            totalPrice: '6.00',
+            currencyCode: 'USA',
+            countryCode: 'US'
         }
     };
 }
