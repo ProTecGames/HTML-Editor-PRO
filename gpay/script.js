@@ -12,14 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function onGooglePayLoaded() {
-    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'PRODUCTION'});
+    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'});
     const button = paymentsClient.createButton({onClick: onGooglePayButtonClicked});
     document.getElementById('google-pay-button-container').appendChild(button);
 }
 
 function onGooglePayButtonClicked() {
     const paymentDataRequest = getGooglePaymentDataRequest();
-    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'PRODUCTION'});
+    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'});
 
     paymentsClient.loadPaymentData(paymentDataRequest).then(function(paymentData) {
         processPayment(paymentData);
