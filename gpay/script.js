@@ -52,7 +52,7 @@ function getGooglePaymentDataRequest() {
         },
         transactionInfo: {
             totalPriceStatus: 'FINAL',
-            totalPrice: '6.00', // Replace with the actual transaction amount
+            totalPrice: '0.01', // Replace with the actual transaction amount
             currencyCode: 'USD', // Replace with the actual currency code
             countryCode: 'US' // Replace with the actual country code
         }
