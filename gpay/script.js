@@ -24,7 +24,7 @@ function onGooglePayButtonClicked() {
     paymentsClient.loadPaymentData(paymentDataRequest).then(function(paymentData) {
         processPayment(paymentData);
     }).catch(function(err) {
-        console.error('Google Pay Error:', err);
+        console.error(err);
     });
 }
 
@@ -41,20 +41,20 @@ function getGooglePaymentDataRequest() {
             tokenizationSpecification: {
                 type: 'PAYMENT_GATEWAY',
                 parameters: {
-                    'gateway': 'yourGatewayName', // Replace with your actual gateway name
-                    'gatewayMerchantId': '877725928481595208' // Replace with your actual gateway merchant ID
+                    'gateway': 'example', // Replace with your gateway name
+                    'gatewayMerchantId': 'exampleGatewayMerchantId' // Replace with your actual gateway merchant ID
                 }
             }
         }],
         merchantInfo: {
-            merchantId: '877725928481595208', // Your actual merchant ID
-            merchantName: 'Elite Code Club' // Your actual merchant name
+            merchantId: '877725928481595208', // Replace with your actual merchant ID
+            merchantName: 'Elite Code Club' // Replace with your actual merchant name
         },
         transactionInfo: {
             totalPriceStatus: 'FINAL',
-            totalPrice: '6.00', // The transaction amount
-            currencyCode: 'USD', // Currency code
-            countryCode: 'US' // Country code
+            totalPrice: '6.00', // Replace with the actual transaction amount
+            currencyCode: 'USD', // Replace with the actual currency code
+            countryCode: 'US' // Replace with the actual country code
         }
     };
 }
@@ -71,6 +71,6 @@ async function processPayment(paymentData) {
             alert('Failed to send payment result to server');
         }
     } catch (error) {
-        console.error('Processing Payment Error:', error);
+        console.error('Error:', error);
     }
 }
