@@ -12,14 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function onGooglePayLoaded() {
-    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'}); // Change to 'PRODUCTION' when going live
+    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'});
     const button = paymentsClient.createButton({onClick: onGooglePayButtonClicked});
     document.getElementById('google-pay-button-container').appendChild(button);
 }
 
 function onGooglePayButtonClicked() {
     const paymentDataRequest = getGooglePaymentDataRequest();
-    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'}); // Change to 'PRODUCTION' when going live
+    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'});
 
     paymentsClient.loadPaymentData(paymentDataRequest).then(function(paymentData) {
         processPayment(paymentData);
@@ -41,20 +41,20 @@ function getGooglePaymentDataRequest() {
             tokenizationSpecification: {
                 type: 'PAYMENT_GATEWAY',
                 parameters: {
-                    'gateway': 'example', // Replace with your gateway name
-                    'gatewayMerchantId': 'exampleGatewayMerchantId' // Replace with your actual gateway merchant ID
+                    'gateway': 'example',
+                    'gatewayMerchantId': 'exampleGatewayMerchantId'
                 }
             }
         }],
         merchantInfo: {
-            merchantId: '877725928481595208', // Replace with your actual merchant ID
-            merchantName: 'Elite Code Club' // Replace with your actual merchant name
+            merchantId: '877725928481595208',
+            merchantName: 'Elite Code Club'
         },
         transactionInfo: {
             totalPriceStatus: 'FINAL',
-            totalPrice: '0.01', // Replace with the actual transaction amount
-            currencyCode: 'USD', // Replace with the actual currency code
-            countryCode: 'US' // Replace with the actual country code
+            totalPrice: '0.01',
+            currencyCode: 'USD',
+            countryCode: 'US'
         }
     };
 }
