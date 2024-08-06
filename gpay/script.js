@@ -12,14 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function onGooglePayLoaded() {
-    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'});
+    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'}); // Change to 'PRODUCTION' when going live
     const button = paymentsClient.createButton({onClick: onGooglePayButtonClicked});
     document.getElementById('google-pay-button-container').appendChild(button);
 }
 
 function onGooglePayButtonClicked() {
     const paymentDataRequest = getGooglePaymentDataRequest();
-    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'});
+    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'}); // Change to 'PRODUCTION' when going live
 
     paymentsClient.loadPaymentData(paymentDataRequest).then(function(paymentData) {
         processPayment(paymentData);
@@ -41,20 +41,20 @@ function getGooglePaymentDataRequest() {
             tokenizationSpecification: {
                 type: 'PAYMENT_GATEWAY',
                 parameters: {
-                    'gateway': 'yourGatewayName',
-                    'gatewayMerchantId': '877725928481595208'
+                    'gateway': 'yourGatewayName', // Replace with your actual gateway name
+                    'gatewayMerchantId': '877725928481595208' // Replace with your actual gateway merchant ID
                 }
             }
         }],
         merchantInfo: {
-            merchantId: '877725928481595208',
-            merchantName: 'Elite Code Club'
+            merchantId: '877725928481595208', // Your actual merchant ID
+            merchantName: 'Elite Code Club' // Your actual merchant name
         },
         transactionInfo: {
             totalPriceStatus: 'FINAL',
-            totalPrice: '6.00',
-            currencyCode: 'USD',
-            countryCode: 'US'
+            totalPrice: '6.00', // The transaction amount
+            currencyCode: 'USD', // Currency code
+            countryCode: 'US' // Country code
         }
     };
 }
