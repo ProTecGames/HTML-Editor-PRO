@@ -12,19 +12,19 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function onGooglePayLoaded() {
-    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'PRODUCTION'}); // Change to 'PRODUCTION' when going live
+    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'PRODUCTION'});
     const button = paymentsClient.createButton({onClick: onGooglePayButtonClicked});
     document.getElementById('google-pay-button-container').appendChild(button);
 }
 
 function onGooglePayButtonClicked() {
     const paymentDataRequest = getGooglePaymentDataRequest();
-    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'PRODUCTION'}); // Change to 'PRODUCTION' when going live
+    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'PRODUCTION'});
 
     paymentsClient.loadPaymentData(paymentDataRequest).then(function(paymentData) {
         processPayment(paymentData);
     }).catch(function(err) {
-        console.error(err);
+        console.error('Google Pay Error:', err);
     });
 }
 
@@ -41,20 +41,20 @@ function getGooglePaymentDataRequest() {
             tokenizationSpecification: {
                 type: 'PAYMENT_GATEWAY',
                 parameters: {
-                    'gateway': 'pws', // Replace with your gateway name
-                    'gatewayMerchantId': '877725928481595208' // Replace with your actual gateway merchant ID
+                    'gateway': 'phonepe',
+                    'gatewayMerchantId': '877725928481595208'
                 }
             }
         }],
         merchantInfo: {
-            merchantId: '877725928481595208', // Replace with your actual merchant ID
-            merchantName: 'Elite Code Club' // Replace with your actual merchant name
+            merchantId: '877725928481595208',
+            merchantName: 'Elite Code Club'
         },
         transactionInfo: {
             totalPriceStatus: 'FINAL',
-            totalPrice: '6.00', // Replace with the actual transaction amount
-            currencyCode: 'USD', // Replace with the actual currency code
-            countryCode: 'US' // Replace with the actual country code
+            totalPrice: '99.9',
+            currencyCode: 'INR',
+            countryCode: 'IN'
         }
     };
 }
@@ -71,6 +71,6 @@ async function processPayment(paymentData) {
             alert('Failed to send payment result to server');
         }
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Processing Payment Error:', error);
     }
 }
