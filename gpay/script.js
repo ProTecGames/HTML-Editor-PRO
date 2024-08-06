@@ -19,7 +19,7 @@ function onGooglePayLoaded() {
 
 function onGooglePayButtonClicked() {
     const paymentDataRequest = getGooglePaymentDataRequest();
-    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'}); // Change to 'PRODUCTION' when going live
+    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'PRODUCTION'}); // Change to 'PRODUCTION' when going live
 
     paymentsClient.loadPaymentData(paymentDataRequest).then(function(paymentData) {
         processPayment(paymentData);
@@ -41,8 +41,8 @@ function getGooglePaymentDataRequest() {
             tokenizationSpecification: {
                 type: 'PAYMENT_GATEWAY',
                 parameters: {
-                    'gateway': 'example', // Replace with your gateway name
-                    'gatewayMerchantId': 'exampleGatewayMerchantId' // Replace with your actual gateway merchant ID
+                    'gateway': 'pws', // Replace with your gateway name
+                    'gatewayMerchantId': '877725928481595208' // Replace with your actual gateway merchant ID
                 }
             }
         }],
