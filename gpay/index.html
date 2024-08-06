@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Purchase Premium</title>
     <link rel="stylesheet" href="styles.css">
-    <script async src="https://pay.google.com/gp/p/js/pay.js"></script>
+    <script src="https://pay.google.com/gp/p/js/pay.js" onload="onGooglePayLoaded()"></script>
 </head>
 <body>
     <div class="container">
@@ -13,6 +13,6 @@
         <input type="text" id="uid" placeholder="UID">
         <div id="google-pay-button-container"></div>
     </div>
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 </html>

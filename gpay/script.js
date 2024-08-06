@@ -1,10 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Ensure Google Pay script is loaded
-    if (typeof google === 'undefined' || !google.payments) {
-        console.error('Google Pay script not loaded');
-        return;
-    }
-
     const urlParams = new URLSearchParams(window.location.search);
     const uidParam = urlParams.get('uid');
     const uidInput = document.getElementById('uid');
@@ -14,72 +8,69 @@ document.addEventListener('DOMContentLoaded', function() {
         uidInput.disabled = true;
     }
 
-    const paymentsClient = new google.payments.api.PaymentsClient({ environment: 'TEST' });
+    onGooglePayLoaded();
+});
 
-    const isReadyToPayRequest = {
+function onGooglePayLoaded() {
+    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'PRODUCTION'}); // Change to 'PRODUCTION' when going live
+    const button = paymentsClient.createButton({onClick: onGooglePayButtonClicked});
+    document.getElementById('google-pay-button-container').appendChild(button);
+}
+
+function onGooglePayButtonClicked() {
+    const paymentDataRequest = getGooglePaymentDataRequest();
+    const paymentsClient = new google.payments.api.PaymentsClient({environment: 'TEST'}); // Change to 'PRODUCTION' when going live
+
+    paymentsClient.loadPaymentData(paymentDataRequest).then(function(paymentData) {
+        processPayment(paymentData);
+    }).catch(function(err) {
+        console.error(err);
+    });
+}
+
+function getGooglePaymentDataRequest() {
+    return {
         apiVersion: 2,
         apiVersionMinor: 0,
         allowedPaymentMethods: [{
-            type: 'UPI',
+            type: 'CARD',
             parameters: {
-                allowedAuthMethods: ['UPI'],
-                allowedCardNetworks: ['UPI']
-            }
-        }]
-    };
-
-    paymentsClient.isReadyToPay(isReadyToPayRequest).then(function(response) {
-        if (response.result) {
-            const button = paymentsClient.createButton({ onClick: onGooglePayButtonClicked });
-            document.getElementById('google-pay-button-container').appendChild(button);
-        } else {
-            console.error('Google Pay is not available.');
-        }
-    }).catch(function(err) {
-        console.error('Error determining readiness to use Google Pay: ', err);
-    });
-
-    function onGooglePayButtonClicked() {
-        const paymentDataRequest = {
-            apiVersion: 2,
-            apiVersionMinor: 0,
-            allowedPaymentMethods: [{
-                type: 'UPI',
-                parameters: {
-                    allowedAuthMethods: ['UPI'],
-                    allowedCardNetworks: ['UPI']
-                }
-            }],
-            transactionInfo: {
-                totalPriceStatus: 'FINAL',
-                totalPrice: '6.00',
-                currencyCode: 'USD'
+                allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                allowedCardNetworks: ['AMEX', 'DISCOVER', 'JCB', 'MASTERCARD', 'VISA']
             },
-            merchantInfo: {
-                merchantName: 'Elite Code Club',
-                merchantId: 'BCR2DN4TWXA6TZ36' // Replace with your actual Merchant ID
+            tokenizationSpecification: {
+                type: 'PAYMENT_GATEWAY',
+                parameters: {
+                    'gateway': 'example', // Replace with your gateway name
+                    'gatewayMerchantId': 'exampleGatewayMerchantId' // Replace with your actual gateway merchant ID
+                }
             }
-        };
-
-        paymentsClient.loadPaymentData(paymentDataRequest).then(function(paymentData) {
-            const uid = uidInput.value;
-            handleSuccess(uid);
-        }).catch(function(err) {
-            console.error('Error processing Google Pay payment: ', err);
-        });
-    }
-
-    async function handleSuccess(uid) {
-        try {
-            const response = await fetch(`https://pws-0h89.onrender.com/paid?uid=${uid}`);
-            if (response.ok) {
-                const data = await response.text();
-                console.log('Server response:', data);
-            } else {
-                alert('Failed to send payment result to server');
-            }
-        } catch (error) {
-            console.error('Error:', error);
+        }],
+        merchantInfo: {
+            merchantId: '877725928481595208', // Replace with your actual merchant ID
+            merchantName: 'Elite Code Club' // Replace with your actual merchant name
+        },
+        transactionInfo: {
+            totalPriceStatus: 'FINAL',
+            totalPrice: '6.00', // Replace with the actual transaction amount
+            currencyCode: 'USD', // Replace with the actual currency code
+            countryCode: 'US' // Replace with the actual country code
         }
+    };
+}
+
+async function processPayment(paymentData) {
+    const uid = document.getElementById('uid').value;
+
+    try {
+        const response = await fetch(`https://pws-0h89.onrender.com/paid?uid=${uid}`);
+        if (response.ok) {
+            const data = await response.text();
+            console.log('Server response:', data);
+        } else {
+            alert('Failed to send payment result to server');
+        }
+    } catch (error) {
+        console.error('Error:', error);
     }
-});
+}
