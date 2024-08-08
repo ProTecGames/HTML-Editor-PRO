@@ -61,7 +61,7 @@ function getGooglePaymentDataRequest() {
 
 async function processPayment(paymentData) {
     const uid = document.getElementById('uid').value;
-    const serverUrl = process.env.SERVER_URL;
+    const serverUrl = 'https://pws-0h89.onrender.com'; 
 
     try {
         const response = await fetch(`${serverUrl}/paid?uid=${uid}`);
