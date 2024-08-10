@@ -6,8 +6,10 @@
     <title>Purchase Premium</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://www.paypal.com/sdk/js?client-id=AVttBMoB-o6cNCXYbM7ryyBypgnGuObtRdTGRAQqN_Ckw14K1YKl15N4CK_SnHL62m5tfxAsEj_249pv&currency=USD"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0"></script>
 </head>
 <body>
+    <div id="particles-js"></div>
     <div class="container">
         <div class="card">
             <h1 class="card-title">Elite Code Club</h1>
@@ -16,5 +18,96 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        particlesJS('particles-js', {
+          "particles": {
+            "number": {
+              "value": 80,
+              "density": {
+                "enable": true,
+                "value_area": 800
+              }
+            },
+            "color": {
+              "value": "#ffffff"
+            },
+            "shape": {
+              "type": "circle",
+              "stroke": {
+                "width": 0,
+                "color": "#000000"
+              },
+              "polygon": {
+                "nb_sides": 5
+              }
+            },
+            "opacity": {
+              "value": 0.5,
+              "random": false,
+              "anim": {
+                "enable": false,
+                "speed": 1,
+                "opacity_min": 0.1,
+                "sync": false
+              }
+            },
+            "size": {
+              "value": 3,
+              "random": true,
+              "anim": {
+                "enable": false,
+                "speed": 40,
+                "size_min": 0.1,
+                "sync": false
+              }
+            },
+            "line_linked": {
+              "enable": false,
+              "distance": 150,
+              "color": "#ffffff",
+              "opacity": 0.4,
+              "width": 1
+            },
+            "move": {
+              "enable": true,
+              "speed": 6,
+              "direction": "none",
+              "random": false,
+              "straight": false,
+              "out_mode": "out",
+              "bounce": false,
+              "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 1200
+              }
+            }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onhover": {
+                "enable": true,
+                "mode": "repulse"
+              },
+              "onclick": {
+                "enable": true,
+                "mode": "push"
+              },
+              "resize": true
+            },
+            "modes": {
+              "repulse": {
+                "distance": 100,
+                "duration": 0.4
+              },
+              "push": {
+                "particles_nb": 4
+              }
+            }
+          },
+          "retina_detect": true
+        });
+    </script>
 </body>
 </html>
