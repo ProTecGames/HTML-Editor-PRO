@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        value: '6'
+                        value: '3'
                     },
                     description: 'HTML Editor PRO - Payment'
                 }]
