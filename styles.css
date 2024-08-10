@@ -33,72 +33,80 @@ body {
   margin-bottom: 2rem;
 }
 
-.hero .logo {
-  width: 150px;
-  margin-bottom: 1rem;
-}
-
-.hero h1 {
+.hero-title {
   font-size: 3rem;
   color: #fff;
   margin-bottom: 1rem;
 }
 
-.hero p {
-  font-size: 1.25rem;
-  color: #fff;
-  margin-bottom: 1.5rem;
+.hero-description {
+  font-size: 1.5rem;
+  color: #ddd;
 }
 
 .cta-buttons {
   display: flex;
-  justify-content: center;
   gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 
 .cta-button {
   padding: 0.75rem 1.5rem;
   background-color: #fff;
   color: #000;
-  border-radius: 0.5rem;
-  text-decoration: none;
+  border-radius: 0.25rem;
   font-weight: bold;
-  transition: background-color 0.3s, transform 0.3s;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
 .cta-button:hover {
-  background-color: #f0f0f0;
-  transform: translateY(-3px);
+  background-color: #e2e8f0;
 }
 
 .feature-cards {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
+  width: 100%;
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.5rem;
-  padding: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+  text-align: center;
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
 }
 
 .card h2 {
-  margin-top: 0;
-}
-
-.card p {
+  font-size: 2rem;
   margin-bottom: 1rem;
 }
 
-.section-title {
-  font-size: 2rem;
-  text-align: center;
+.card p {
+  font-size: 1rem;
   margin-bottom: 1.5rem;
-  color: #fff;
+}
+
+.card a {
+  text-decoration: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

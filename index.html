@@ -22,9 +22,8 @@
   <div id="particles-js"></div>
   <div class="container">
     <header class="hero">
-      <img src="/assets/logo.png" alt="HTML Editor PRO Logo" class="logo">
-      <h1>HTML Editor PRO</h1>
-      <p>An Ad-Free powerful editor for HTML, CSS, and JavaScript</p>
+      <h1 class="hero-title">HTML Editor PRO</h1>
+      <p class="hero-description">An Ad-Free powerful editor for HTML, CSS, and JavaScript</p>
       <div class="cta-buttons">
         <a href="/mails/10-08-2024" class="cta-button">Download App</a>
         <a href="pages/PlansandPricing.html" class="cta-button">Plans & Pricing</a>
@@ -33,43 +32,43 @@
     </header>
 
     <section class="feature-cards">
-      <div class="card">
+      <div class="card" data-animation="fadeIn">
         <h2>Download App</h2>
         <p>Download the app for free on your Android device.</p>
         <a href="pages/download.html" class="cta-button">Download Now</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-animation="fadeIn">
         <h2>To-Do List</h2>
         <p>Manage your tasks and stay organized with the built-in to-do list feature.</p>
         <a href="pages/FutureFeature.html" class="cta-button">View To-Do List</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-animation="fadeIn">
         <h2>Privacy Policy</h2>
         <p>Read our privacy policy to understand how we handle your data.</p>
         <a href="pages/privacypolicy.html" class="cta-button">View Privacy Policy</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-animation="fadeIn">
         <h2>Terms and Conditions</h2>
         <p>Read our terms and conditions.</p>
         <a href="pages/terms.html" class="cta-button">View Terms and Conditions</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-animation="fadeIn">
         <h2>Refund Policy</h2>
         <p>Read our refund policy.</p>
         <a href="pages/refund.html" class="cta-button">View Refund Policy</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-animation="fadeIn">
         <h2>Shipping Policy</h2>
         <p>Read our shipping policy.</p>
         <a href="pages/shipping.html" class="cta-button">View Shipping Policy</a>
       </div>
 
-      <div class="card">
+      <div class="card" data-animation="fadeIn">
         <h2>Contact Us</h2>
         <p>Contact us for any queries.</p>
         <a href="pages/contact.html" class="cta-button">View Contact Details</a>
@@ -78,7 +77,9 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
   <script>
+    // Particles.js configuration
     particlesJS('particles-js', {
       "particles": {
         "number": {
@@ -159,8 +160,51 @@
       },
       "retina_detect": true
     });
+
+    // Typed.js animation for hero title
+    new Typed('.hero-title', {
+      strings: ["HTML Editor PRO"],
+      typeSpeed: 100,
+      backSpeed: 50,
+      loop: false
+    });
+
+    // Fade-in effect for cards
+    document.querySelectorAll('.card').forEach((card) => {
+      card.style.opacity = 0;
+      card.style.transform = 'translateY(20px)';
+      setTimeout(() => {
+        card.style.transition = 'opacity 1s ease, transform 1s ease';
+        card.style.opacity = 1;
+        card.style.transform = 'translateY(0)';
+      }, 100);
+    });
+
+    // Drag animation
+    document.querySelectorAll('.card').forEach((card) => {
+      card.addEventListener('mousedown', (e) => {
+        const shiftX = e.clientX - card.getBoundingClientRect().left;
+        const shiftY = e.clientY - card.getBoundingClientRect().top;
+
+        function moveAt(pageX, pageY) {
+          card.style.left = pageX - shiftX + 'px';
+          card.style.top = pageY - shiftY + 'px';
+        }
+
+        function onMouseMove(e) {
+          moveAt(e.pageX, e.pageY);
+        }
+
+        document.addEventListener('mousemove', onMouseMove);
+
+        card.onmouseup = () => {
+          document.removeEventListener('mousemove', onMouseMove);
+          card.onmouseup = null;
+        };
+      });
+
+      card.ondragstart = () => false;
+    });
   </script>
-  <script type="application/javascript" src="https://sdki.truepush.com/sdk/v2.0.4/app.js" async></script>
-  <script src="script.js" type="application/javascript"></script>
 </body>
 </html>
