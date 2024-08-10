@@ -1,5 +1,5 @@
 hidden=[".config"]
-modules = ["web"]
+modules = ["web", "nodejs-20"]
 
 [deployment]
 publicDir = "/"
