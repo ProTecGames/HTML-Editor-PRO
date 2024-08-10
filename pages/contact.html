@@ -6,15 +6,133 @@
   <title>Contact Us</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
+  <style>
+    body {
+      background: #333;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .blurred-card {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .particles-js-canvas-el {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+  </style>
 </head>
 <body>
+  <div id="particles-js"></div>
   <div class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold text-center mb-6">Contact Us</h1>
-    <p>If you have any questions or concerns, please contact us at:</p>
-    <p class="mt-4">Email: <a href="mailto:protecgamesofficial@gmail.com">protecgamesofficial@gmail.com</a> or <a href="mailto: prakhardoneria3@gmail.com">prakhardoneria3@gmail.com</a></p>
-    
-    <p class="mt-4">Address: Professor Colony, Opp. KK Degree College, Etawah, Uttar Pradesh, India</p>
-    <p class="mt-4">Phone: <a href="tel:6395203201">+91 6395203201</a></p>
+    <div class="blurred-card p-6 mx-auto max-w-lg">
+      <h1 class="text-3xl font-bold text-center mb-6">Contact Us</h1>
+      <p>If you have any questions or concerns, please contact us at:</p>
+      <p class="mt-4">Email: <a href="mailto:protecgamesofficial@gmail.com" class="text-blue-400">protecgamesofficial@gmail.com</a> or <a href="mailto:prakhardoneria3@gmail.com" class="text-blue-400">prakhardoneria3@gmail.com</a></p>
+      <p class="mt-4">Address: Professor Colony, Opp. KK Degree College, Etawah, Uttar Pradesh, India</p>
+      <p class="mt-4">Phone: <a href="tel:6395203201" class="text-blue-400">+91 6395203201</a></p>
+    </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0"></script>
+  <script>
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": false,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "repulse": {
+            "distance": 100,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
 </body>
 </html>
