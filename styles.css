@@ -4,6 +4,8 @@ body {
   font-family: 'JetBrains Mono', monospace;
   margin: 0;
   padding: 0;
+  background-color: #000;
+  color: #fff;
   overflow-x: hidden;
 }
 
@@ -17,41 +19,42 @@ body {
 }
 
 .container {
-  position: relative;
-  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  background-image: linear-gradient(to right, #667eea, #764ba2);
-  color: #fff;
+  margin-bottom: 2rem;
 }
 
 .hero-title {
-  font-size: 4rem;
-  font-weight: bold;
+  font-size: 3rem;
+  color: #fff;
   margin-bottom: 1rem;
 }
 
 .hero-description {
   font-size: 1.5rem;
-  margin-bottom: 2rem;
+  color: #ddd;
 }
 
 .cta-buttons {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 
 .cta-button {
   padding: 0.75rem 1.5rem;
   background-color: #fff;
-  color: #667eea;
+  color: #000;
   border-radius: 0.25rem;
   font-weight: bold;
   text-decoration: none;
@@ -64,27 +67,50 @@ body {
 
 .feature-cards {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-  padding: 2rem;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
 }
 
 .card {
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0.5rem;
-  padding: 1.5rem;
-  width: 300px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
   text-align: center;
-  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .card h2 {
-  margin-top: 0;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .card p {
+  font-size: 1rem;
   margin-bottom: 1.5rem;
+}
+
+.card a {
+  text-decoration: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card.animate {
+  animation: fadeIn 1s ease forwards;
 }
