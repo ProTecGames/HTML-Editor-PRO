@@ -110,3 +110,7 @@ body {
     transform: translateY(0);
   }
 }
+
+.card.animate {
+  animation: fadeIn 1s ease forwards;
+}
