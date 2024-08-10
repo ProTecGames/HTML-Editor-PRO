@@ -32,43 +32,43 @@
     </header>
 
     <section class="feature-cards">
-      <div class="card" id="card-download" data-animation="fadeIn">
+      <div class="card" id="card-download">
         <h2>Download App</h2>
         <p>Download the app for free on your Android device.</p>
-        <a href="/mails/10-08-2024" class="cta-button">Download Now</a>
+        <a href="pages/download.html" class="cta-button">Download Now</a>
       </div>
 
-      <div class="card" id="card-todo" data-animation="fadeIn">
+      <div class="card" id="card-todo">
         <h2>To-Do List</h2>
         <p>Manage your tasks and stay organized with the built-in to-do list feature.</p>
         <a href="pages/FutureFeature.html" class="cta-button">View To-Do List</a>
       </div>
 
-      <div class="card" id="card-privacy" data-animation="fadeIn">
+      <div class="card" id="card-privacy">
         <h2>Privacy Policy</h2>
         <p>Read our privacy policy to understand how we handle your data.</p>
         <a href="pages/privacypolicy.html" class="cta-button">View Privacy Policy</a>
       </div>
 
-      <div class="card" id="card-terms" data-animation="fadeIn">
+      <div class="card" id="card-terms">
         <h2>Terms and Conditions</h2>
         <p>Read our terms and conditions.</p>
         <a href="pages/terms.html" class="cta-button">View Terms and Conditions</a>
       </div>
 
-      <div class="card" id="card-refund" data-animation="fadeIn">
+      <div class="card" id="card-refund">
         <h2>Refund Policy</h2>
         <p>Read our refund policy.</p>
         <a href="pages/refund.html" class="cta-button">View Refund Policy</a>
       </div>
 
-      <div class="card" id="card-shipping" data-animation="fadeIn">
+      <div class="card" id="card-shipping">
         <h2>Shipping Policy</h2>
         <p>Read our shipping policy.</p>
         <a href="pages/shipping.html" class="cta-button">View Shipping Policy</a>
       </div>
 
-      <div class="card" id="card-contact" data-animation="fadeIn">
+      <div class="card" id="card-contact">
         <h2>Contact Us</h2>
         <p>Contact us for any queries.</p>
         <a href="pages/contact.html" class="cta-button">View Contact Details</a>
@@ -166,15 +166,11 @@
       strings: ["HTML Editor PRO"],
       typeSpeed: 100,
       backSpeed: 50,
-      loop: false
+      loop: false,
+      showCursor: false
     });
 
     // Fade-in effect for cards
-    document.querySelectorAll('.card').forEach((card) => {
-      card.classList.add('animate');
-    });
-
-    // Animation handling
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.card').forEach((card) => {
         card.style.opacity = 0;
