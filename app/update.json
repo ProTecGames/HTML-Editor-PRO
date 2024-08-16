@@ -3,7 +3,7 @@
   "Title": "New version available",
   "Description": "You are on old version of app please update.",
   "MainTextButton": "UPDATE",
-  "Cancelable": false,
+  "Cancelable": true,
   "CancelButtonText": "Later",
   "DownloadLink": "https://html-editor-pro.vercel.app/pages/download.html",
   "Version": "12.0"
