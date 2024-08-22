@@ -1,7 +1,7 @@
 {
   "Visibility": "VISIBLE",
-  "Title": "New version available",
-  "Description": "You are on old version of app please update.",
+  "Title": "Cloud Coding - Available Now",
+  "Description": "Start making projects right in cloud now! No need to save any file all online.",
   "MainTextButton": "UPDATE",
   "Cancelable": true,
   "CancelButtonText": "Later",
