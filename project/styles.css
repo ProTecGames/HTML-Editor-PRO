@@ -35,6 +35,11 @@ header {
   overflow: hidden;
   width: 100%;
   max-width: 400px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .card-header {
@@ -46,6 +51,23 @@ header {
 
 .card-body {
   padding: 16px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.info-item .material-icons {
+  color: #6200ee;
+  font-size: 24px;
+  margin-right: 12px;
+}
+
+.info-item p {
+  margin: 0;
+  font-size: 16px;
 }
 
 .card-footer {
@@ -74,9 +96,10 @@ p {
   border-radius: 8px;
   text-decoration: none;
   text-align: center;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .btn:hover {
   background-color: #3700b3;
+  transform: scale(1.05);
 }
