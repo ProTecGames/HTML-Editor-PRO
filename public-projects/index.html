@@ -6,35 +6,32 @@
     <title>Project Dashboard</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div id="particles-js"></div>
+    
+    <!-- Main container -->
     <div class="container">
-        <div class="hero">
-            <h1 class="hero-title">Welcome to the Project Dashboard</h1>
-            <p class="hero-description">Explore and download projects from our repository.</p>
-        </div>
-        <div class="cta-buttons">
-            <a href="#" class="cta-button" onclick="document.getElementById('search-modal').style.display='flex'">Search Projects</a>
-            <a href="#" class="cta-button" onclick="document.getElementById('leaderboard-modal').style.display='flex'">View Leaderboard</a>
-        </div>
-        <div id="projects-container" class="feature-cards"></div>
-    </div>
+        <header class="hero">
+            <h1 class="hero-title">Project Dashboard</h1>
+            <p class="hero-description">Explore and download projects</p>
+            <div class="cta-buttons">
+                <button class="cta-button" onclick="openSearchModal()">Search</button>
+                <button class="cta-button" onclick="openLeaderboardModal()">Leaderboard</button>
+            </div>
+        </header>
 
-    <!-- CAPTCHA Modal -->
-    <div id="captcha-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeCaptchaModal()">&times;</span>
-            <div class="g-recaptcha" data-sitekey="6LeQ3C8qAAAAAI9hm74as6Pehi1pkEw5LQaGgyIL" data-callback="onCaptchaSuccess"></div>
-        </div>
+        <section id="projects-container" class="feature-cards"></section>
     </div>
-
+    
     <!-- Search Modal -->
     <div id="search-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('search-modal').style.display='none'">&times;</span>
-            <input type="text" id="search-box" placeholder="Search projects..." />
-            <button onclick="performSearch()">Search</button>
+            <h2>Search Projects</h2>
+            <input type="text" id="search-box" placeholder="Enter search term...">
+            <button class="cta-button" onclick="performSearch()">Search</button>
             <div id="search-results" class="feature-cards"></div>
         </div>
     </div>
@@ -43,10 +40,18 @@
     <div id="leaderboard-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('leaderboard-modal').style.display='none'">&times;</span>
+            <h2>Leaderboard</h2>
             <div id="leaderboard" class="feature-cards"></div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- CAPTCHA Modal -->
+    <div id="captcha-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCaptchaModal()">&times;</span>
+            <h2>Verify You're Human</h2>
+            <div class="g-recaptcha" data-sitekey="6LeQ3C8qAAAAAI9hm74as6Pehi1pkEw5LQaGgyIL"></div>
+        </div>
+    </div>
 </body>
 </html>
