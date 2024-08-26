@@ -36,6 +36,7 @@ async function fetchProjects() {
                         return;
                     }
 
+                    // Redirect to the download URL if reCAPTCHA is completed
                     const downloadUrl = form.getAttribute('data-download-url');
                     window.location.href = downloadUrl;
                 });
