@@ -1,36 +1,80 @@
-// Fetch and display projects
-async function fetchProjects() {
-    try {
-        const response = await fetch('https://htmleditorpro.deno.dev/projects');
-        const data = await response.json();
+document.addEventListener('DOMContentLoaded', () => {
+    loadProjects();
+    loadLeaderboard();
 
-        if (data.status === 'success') {
-            const projectsContainer = document.getElementById('projects-container');
-            projectsContainer.innerHTML = '';
-
-            data.projects.forEach((project, index) => {
-                const projectCard = document.createElement('div');
-                projectCard.className = 'card animate';
-                projectCard.style.animationDelay = `${index * 0.1}s`; // Staggered animations
-
-                projectCard.innerHTML = `
-                    <h2>${project.FileName}</h2>
-                    <p>Uploaded by: ${project.Username}</p>
-                    <p>Downloads: ${project.Download}</p>
-                    <a href="${project.File}" target="_blank">View File</a>
-                `;
-
-                projectsContainer.appendChild(projectCard);
-            });
-        }
-    } catch (error) {
-        console.error('Error fetching projects:', error);
-    }
-}
-
-// Initialize particles.js
-particlesJS.load('particles-js', 'particles-config.json', function() {
-    console.log('Particles.js config loaded');
+    document.getElementById('search-button').addEventListener('click', searchProjects);
 });
 
-document.addEventListener('DOMContentLoaded', fetchProjects);
+function loadProjects() {
+    fetch('https://htmleditorpro.deno.dev/projects')
+        .then(response => response.json())
+        .then(data => {
+            const projectsList = document.getElementById('projects-list');
+            projectsList.innerHTML = '';
+            data.projects.forEach(project => {
+                const projectCard = createProjectCard(project);
+                projectsList.appendChild(projectCard);
+            });
+        });
+}
+
+function loadLeaderboard() {
+    fetch('https://htmleditorpro.deno.dev/leaderboard')
+        .then(response => response.json())
+        .then(data => {
+            const leaderboard = document.getElementById('leaderboard');
+            leaderboard.innerHTML = '';
+            data.projects.forEach(project => {
+                const projectCard = createProjectCard(project);
+                leaderboard.appendChild(projectCard);
+            });
+        });
+}
+
+function createProjectCard(project) {
+    const card = document.createElement('div');
+    card.className = 'card animate';
+    card.innerHTML = `
+        <h2>${project.FileName}</h2>
+        <p>Uploaded by: ${project.Username}</p>
+        <p>Downloads: ${project.Download}</p>
+        <div class="g-recaptcha" data-sitekey="6LeQ3C8qAAAAAI9hm74as6Pehi1pkEw5LQaGgyIL" data-callback="onCaptchaSuccess"></div>
+        <a href="#" onclick="incrementDownload('${project.projectId}')">Download</a>
+    `;
+    return card;
+}
+
+function searchProjects() {
+    const query = document.getElementById('search-input').value.trim().toLowerCase();
+    if (!query) return;
+
+    fetch(`https://htmleditorpro.deno.dev/search?q=${query}`)
+        .then(response => response.json())
+        .then(data => {
+            const projectsList = document.getElementById('projects-list');
+            projectsList.innerHTML = '';
+            data.projects.forEach(project => {
+                const projectCard = createProjectCard(project);
+                projectsList.appendChild(projectCard);
+            });
+        });
+}
+
+function incrementDownload(projectId) {
+    if (grecaptcha.getResponse() === '') {
+        alert('Please complete the CAPTCHA');
+        return;
+    }
+    
+    fetch(`https://htmleditorpro.deno.dev/increase?projectId=${projectId}`)
+        .then(response => response.json())
+        .then(data => {
+            alert(`Download count updated: ${data.download}`);
+            loadProjects();
+            loadLeaderboard();
+        });
+}
+
+function onCaptchaSuccess() {
+    console.log('CAPTCHA successful');
+}
