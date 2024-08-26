@@ -3,19 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects List</title>
+    <title>Projects Portal</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <div id="particles-js"></div>
     <div class="container">
-        <div class="hero">
-            <h1 class="hero-title">Projects List</h1>
-            <p class="hero-description">Browse through the list of available projects</p>
-        </div>
-        <div id="projects-container" class="feature-cards"></div>
+        <header class="hero">
+            <h1 class="hero-title">Projects Portal</h1>
+            <p class="hero-description">Discover and explore a variety of projects</p>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search projects..." />
+                <button id="search-button" class="material-button">Search</button>
+            </div>
+        </header>
+
+        <section class="feature-section">
+            <h2 class="section-title">Top Projects</h2>
+            <div id="leaderboard" class="feature-cards"></div>
+        </section>
+
+        <section class="feature-section">
+            <h2 class="section-title">All Projects</h2>
+            <div id="projects-list" class="feature-cards"></div>
+        </section>
     </div>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
