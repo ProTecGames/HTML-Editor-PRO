@@ -3,34 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects Portal</title>
+    <title>Project Explorer</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <div id="particles-js"></div>
     <div class="container">
-        <header class="hero">
-            <h1 class="hero-title">Projects Portal</h1>
-            <p class="hero-description">Discover and explore a variety of projects</p>
-            <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Search projects..." />
-                <button id="search-button" class="material-button">Search</button>
-            </div>
-        </header>
-
-        <section class="feature-section">
-            <h2 class="section-title">Top Projects</h2>
-            <div id="leaderboard" class="feature-cards"></div>
-        </section>
-
-        <section class="feature-section">
-            <h2 class="section-title">All Projects</h2>
-            <div id="projects-list" class="feature-cards"></div>
-        </section>
+        <div class="hero">
+            <h1 class="hero-title">Explore Projects</h1>
+            <p class="hero-description">Search and download projects.</p>
+            <input type="text" id="search-input" placeholder="Search projects..." onkeydown="handleSearch(event)">
+        </div>
+        <div class="feature-cards" id="projects-container"></div>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <div id="captcha-modal" class="modal">
+        <div class="modal-content">
+            <div class="g-recaptcha" data-sitekey="6LeQ3C8qAAAAAI9hm74as6Pehi1pkEw5LQaGgyIL" data-callback="onCaptchaSuccess"></div>
+            <button class="close-button" onclick="closeCaptchaModal()">Close</button>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
