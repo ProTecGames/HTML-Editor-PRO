@@ -1,73 +1,75 @@
-const baseUrl = "https://htmleditorpro.deno.dev";
-
+// Fetch and display projects
 async function fetchProjects() {
-    const response = await fetch(`${baseUrl}/projects`);
-    const data = await response.json();
-    if (data.status === "success") {
-        displayProjects(data.projects);
-    } else {
-        console.error("Failed to load projects:", data.message);
-    }
-}
-
-function displayProjects(projects) {
-    const container = document.getElementById("projects-container");
-    container.innerHTML = ""; // Clear existing content
-
-    projects.forEach(project => {
-        const card = document.createElement("div");
-        card.className = "card animate";
-        card.innerHTML = `
-            <h2>${project.FileName}</h2>
-            <p>Uploaded by: ${project.Username}</p>
-            <p>Downloads: ${project.Download}</p>
-            <a href="#" onclick="handleDownload('${project.projectId}')">Download</a>
-        `;
-        container.appendChild(card);
-    });
-}
-
-async function handleSearch(event) {
-    if (event.key === "Enter") {
-        const query = document.getElementById("search-input").value;
-        const response = await fetch(`${baseUrl}/search?q=${encodeURIComponent(query)}`);
+    try {
+        const response = await fetch('https://htmleditorpro.deno.dev/projects');
         const data = await response.json();
-        if (data.status === "success") {
-            displayProjects(data.projects);
+
+        if (data.status === 'success') {
+            const projectsContainer = document.getElementById('projects-container');
+            projectsContainer.innerHTML = '';
+
+            data.projects.forEach((project, index) => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'card animate';
+                projectCard.style.animationDelay = `${index * 0.1}s`; // Staggered animations
+
+                projectCard.innerHTML = `
+                    <h2>${project.FileName}</h2>
+                    <p>Uploaded by: ${project.Username}</p>
+                    <p>Downloads: ${project.Download}</p>
+                    <a href="${project.File}" target="_blank">View File</a>
+                    <button onclick="handleDownload('${project.projectId}')">Download</button>
+                `;
+
+                projectsContainer.appendChild(projectCard);
+            });
         } else {
-            console.error("Search failed:", data.message);
+            console.error('Failed to fetch projects:', data.message);
         }
+    } catch (error) {
+        console.error('Error fetching projects:', error);
     }
 }
 
+// Handle project download request
 function handleDownload(projectId) {
     showCaptchaModal(projectId);
 }
 
+// Show CAPTCHA modal
 function showCaptchaModal(projectId) {
-    const modal = document.getElementById("captcha-modal");
-    modal.style.display = "block";
-    window.currentProjectId = projectId; // Store the current projectId globally
+    const modal = document.getElementById('captcha-modal');
+    modal.style.display = 'flex';
+    window.currentProjectId = projectId;
 }
 
+// Close CAPTCHA modal
 function closeCaptchaModal() {
-    const modal = document.getElementById("captcha-modal");
-    modal.style.display = "none";
+    const modal = document.getElementById('captcha-modal');
+    modal.style.display = 'none';
 }
 
+// Callback for CAPTCHA success
 function onCaptchaSuccess() {
     const projectId = window.currentProjectId;
-    fetch(`${baseUrl}/increase?projectId=${projectId}`)
+    fetch(`https://htmleditorpro.deno.dev/increase?projectId=${projectId}`)
         .then(response => response.json())
         .then(data => {
-            if (data.status === "success") {
-                window.location.href = `https://your-download-url/${projectId}`;
+            if (data.status === 'success') {
+                // Redirect to project URL or download page
+                window.location.href = `https://htmleditorpro.deno.dev/download/${projectId}`; // Adjust URL if needed
             } else {
-                console.error("Failed to increase download count:", data.message);
+                console.error('Failed to increase download count:', data.message);
             }
         })
-        .catch(error => console.error("Error during download increment:", error));
+        .catch(error => console.error('Error during download increment:', error));
     closeCaptchaModal();
 }
 
-document.addEventListener("DOMContentLoaded", fetchProjects);
+// Initialize particles.js
+particlesJS.load('particles-js', 'particles-config.json', function() {
+    console.log('Particles.js config loaded');
+});
+
+// Fetch projects on page load
+document.addEventListener('DOMContentLoaded', fetchProjects);
