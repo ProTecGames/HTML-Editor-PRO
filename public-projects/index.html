@@ -3,55 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Dashboard</title>
+    <title>Projects List</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
     <div id="particles-js"></div>
-    
-    <!-- Main container -->
     <div class="container">
-        <header class="hero">
-            <h1 class="hero-title">Project Dashboard</h1>
-            <p class="hero-description">Explore and download projects</p>
-            <div class="cta-buttons">
-                <button class="cta-button" onclick="openSearchModal()">Search</button>
-                <button class="cta-button" onclick="openLeaderboardModal()">Leaderboard</button>
-            </div>
-        </header>
-
-        <section id="projects-container" class="feature-cards"></section>
-    </div>
-    
-    <!-- Search Modal -->
-    <div id="search-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="document.getElementById('search-modal').style.display='none'">&times;</span>
-            <h2>Search Projects</h2>
-            <input type="text" id="search-box" placeholder="Enter search term...">
-            <button class="cta-button" onclick="performSearch()">Search</button>
-            <div id="search-results" class="feature-cards"></div>
+        <div class="hero">
+            <h1 class="hero-title">Projects List</h1>
+            <p class="hero-description">Browse through the list of available projects</p>
         </div>
+        <div id="projects-container" class="feature-cards"></div>
     </div>
-
-    <!-- Leaderboard Modal -->
-    <div id="leaderboard-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="document.getElementById('leaderboard-modal').style.display='none'">&times;</span>
-            <h2>Leaderboard</h2>
-            <div id="leaderboard" class="feature-cards"></div>
-        </div>
-    </div>
-
-    <!-- CAPTCHA Modal -->
-    <div id="captcha-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeCaptchaModal()">&times;</span>
-            <h2>Verify You're Human</h2>
-            <div class="g-recaptcha" data-sitekey="6LeQ3C8qAAAAAI9hm74as6Pehi1pkEw5LQaGgyIL"></div>
-        </div>
-    </div>
+    <script src="script.js"></script>
 </body>
 </html>
