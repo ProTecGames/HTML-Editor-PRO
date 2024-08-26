@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="projectName">Loading...</h1>
+        <div class="detail-item">
+            <i class="material-icons">person</i>
+            <p id="username">Fetching data...</p>
+        </div>
+        <div class="detail-item">
+            <i class="material-icons">verified</i>
+            <p id="verified">...</p>
+        </div>
+        <div class="detail-item">
+            <i class="material-icons">fingerprint</i>
+            <p id="uid">...</p>
+        </div>
+        <div class="detail-item">
+            <i class="material-icons">file_download</i>
+            <p id="downloadCount">...</p>
+        </div>
+        <button id="downloadButton" class="download-btn" onclick="downloadApp()">
+            <i class="material-icons">get_app</i>
+            Download App from Play Store
+        </button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
