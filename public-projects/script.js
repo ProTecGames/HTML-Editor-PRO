@@ -1,54 +1,73 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    loadProjects();
-    document.getElementById('search-input').addEventListener('keydown', handleSearch);
-});
+const baseUrl = "https://htmleditorpro.deno.dev";
 
-async function loadProjects(query = '') {
-    const response = await fetch(`/search?q=${query}`);
-    const result = await response.json();
-    if (result.status === 'success') {
-        displayProjects(result.projects);
+async function fetchProjects() {
+    const response = await fetch(`${baseUrl}/projects`);
+    const data = await response.json();
+    if (data.status === "success") {
+        displayProjects(data.projects);
+    } else {
+        console.error("Failed to load projects:", data.message);
     }
 }
 
 function displayProjects(projects) {
-    const container = document.getElementById('projects-container');
-    container.innerHTML = '';
+    const container = document.getElementById("projects-container");
+    container.innerHTML = ""; // Clear existing content
+
     projects.forEach(project => {
-        const card = document.createElement('div');
-        card.className = 'card animate';
+        const card = document.createElement("div");
+        card.className = "card animate";
         card.innerHTML = `
             <h2>${project.FileName}</h2>
             <p>Uploaded by: ${project.Username}</p>
-            <button onclick="handleDownload('${project.projectId}', '${project.File}')">Download</button>
+            <p>Downloads: ${project.Download}</p>
+            <a href="#" onclick="handleDownload('${project.projectId}')">Download</a>
         `;
         container.appendChild(card);
     });
 }
 
-function handleSearch(event) {
-    if (event.key === 'Enter') {
-        const query = event.target.value;
-        loadProjects(query);
+async function handleSearch(event) {
+    if (event.key === "Enter") {
+        const query = document.getElementById("search-input").value;
+        const response = await fetch(`${baseUrl}/search?q=${encodeURIComponent(query)}`);
+        const data = await response.json();
+        if (data.status === "success") {
+            displayProjects(data.projects);
+        } else {
+            console.error("Search failed:", data.message);
+        }
     }
 }
 
-let downloadUrl = '';
-
-function handleDownload(projectId, fileUrl) {
-    downloadUrl = fileUrl;
-    document.getElementById('captcha-modal').style.display = 'block';
+function handleDownload(projectId) {
+    showCaptchaModal(projectId);
 }
 
-function onCaptchaSuccess() {
-    document.getElementById('captcha-modal').style.display = 'none';
-    window.location.href = downloadUrl;
-    fetch(`/increase?projectId=${projectId}`)
-        .then(response => response.json())
-        .then(data => console.log('Download count increased:', data))
-        .catch(error => console.error('Error increasing download count:', error));
+function showCaptchaModal(projectId) {
+    const modal = document.getElementById("captcha-modal");
+    modal.style.display = "block";
+    window.currentProjectId = projectId; // Store the current projectId globally
 }
 
 function closeCaptchaModal() {
-    document.getElementById('captcha-modal').style.display = 'none';
+    const modal = document.getElementById("captcha-modal");
+    modal.style.display = "none";
 }
+
+function onCaptchaSuccess() {
+    const projectId = window.currentProjectId;
+    fetch(`${baseUrl}/increase?projectId=${projectId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                window.location.href = `https://your-download-url/${projectId}`;
+            } else {
+                console.error("Failed to increase download count:", data.message);
+            }
+        })
+        .catch(error => console.error("Error during download increment:", error));
+    closeCaptchaModal();
+}
+
+document.addEventListener("DOMContentLoaded", fetchProjects);
