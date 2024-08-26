@@ -20,7 +20,7 @@ function fetchProjectDetails(projectId) {
                 document.getElementById('verified').textContent = data.Verified ? "Verified" : "Not Verified";
                 document.getElementById('uid').textContent = `UID: ${data.UID}`;
                 document.getElementById('downloadCount').textContent = `Downloads: ${data.Download}`;
-                
+                document.getElementById('fileUrl').textContent = `File URL: ${data.File}`;
             } else {
                 document.getElementById('projectName').textContent = "Project Not Found";
                 document.getElementById('username').textContent = "No data available.";
