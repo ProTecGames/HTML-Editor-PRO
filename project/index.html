@@ -6,6 +6,7 @@
   <title>Project Details</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
   <div class="app-container">
@@ -19,10 +20,22 @@
           <h2 id="project-title">Project Title</h2>
         </div>
         <div class="card-body">
-          <p id="project-username">Username: </p>
-          <p id="project-uid">UID: </p>
-          <p id="project-verified">Verified: </p>
-          <p id="project-downloads">Downloads: </p>
+          <div class="info-item">
+            <span class="material-icons">person</span>
+            <p id="project-username">Username: </p>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">badge</span>
+            <p id="project-uid">UID: </p>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">verified_user</span>
+            <p id="project-verified">Verified: </p>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">download</span>
+            <p id="project-downloads">Downloads: </p>
+          </div>
         </div>
         <div class="card-footer">
           <a href="https://play.google.com/store/apps/details?id=com.protecgames.htmleditor" id="download-button" class="btn">Download App</a>
