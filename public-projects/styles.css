@@ -4,13 +4,9 @@ body {
   font-family: 'JetBrains Mono', monospace;
   margin: 0;
   padding: 0;
-  background-color: #121212;
-  color: #FFFFFF;
+  background-color: #000;
+  color: #fff;
   overflow-x: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
 }
 
 #particles-js {
@@ -23,9 +19,13 @@ body {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 2rem;
-  max-width: 1200px;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .hero {
@@ -35,103 +35,94 @@ body {
 
 .hero-title {
   font-size: 3rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 0.5rem;
+  color: #fff;
+  margin-bottom: 1rem;
 }
 
 .hero-description {
-  font-size: 1.25rem;
-  color: #b0b0b0;
-  margin-bottom: 2rem;
-}
-
-.search-bar {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 3rem;
-}
-
-.search-bar input {
-  flex: 1;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  border: none;
-  outline: none;
-  font-size: 1rem;
-  background-color: #333;
-  color: #fff;
-}
-
-.search-bar button {
-  padding: 0.75rem 1.5rem;
-  background-color: #6200ea;
-  color: #fff;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.search-bar button:hover {
-  background-color: #3700b3;
-}
-
-.feature-section {
-  margin-bottom: 3rem;
-}
-
-.section-title {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #ddd;
 }
 
 .feature-cards {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
 }
 
 .card {
-  background-color: #1f1f1f;
-  border: 1px solid #333;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  flex: 1 1 calc(33.333% - 1rem);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .card h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #FFFFFF;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .card p {
   font-size: 1rem;
-  color: #b0b0b0;
+  margin-bottom: 1.5rem;
 }
 
 .card a {
-  display: inline-block;
-  margin-top: 1rem;
-  color: #6200ea;
   text-decoration: none;
 }
 
-.card a:hover {
-  text-decoration: underline;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
-}
-
-@media (max-width: 768px) {
-  .card {
-    flex: 1 1 100%;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card.animate {
+  animation: fadeIn 1s ease forwards;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.modal-content {
+  margin: 20px 0;
+}
+
+.close-button {
+  background-color: #fff;
+  color: #000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background-color: #e2e8f0;
 }
