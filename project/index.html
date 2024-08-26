@@ -1,41 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Details</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1 id="projectName">Loading...</h1>
-        <div class="detail-item">
-            <i class="material-icons">person</i>
-            <p id="username">Fetching data...</p>
+  <div class="app-container">
+    <header>
+      <h1>Project Details</h1>
+    </header>
+
+    <main class="content">
+      <div id="project-info" class="card">
+        <div class="card-header">
+          <h2 id="project-title">Project Title</h2>
         </div>
-        <div class="detail-item">
-            <i class="material-icons">verified</i>
-            <p id="verified">...</p>
+        <div class="card-body">
+          <p id="project-username">Username: </p>
+          <p id="project-uid">UID: </p>
+          <p id="project-verified">Verified: </p>
+          <p id="project-downloads">Downloads: </p>
         </div>
-        <div class="detail-item">
-            <i class="material-icons">fingerprint</i>
-            <p id="uid">...</p>
+        <div class="card-footer">
+          <a href="https://play.google.com/store/apps/details?id=com.protecgames.htmleditor" id="download-button" class="btn">Download App</a>
         </div>
-        <div class="detail-item">
-            <i class="material-icons">file_download</i>
-            <p id="downloadCount">...</p>
-        </div>
-        <div class="detail-item">
-            <i class="material-icons">link</i>
-            <p id="fileUrl">...</p>
-        </div>
-        <button id="downloadButton" class="download-btn" onclick="downloadApp()">
-            <i class="material-icons">get_app</i>
-            Download App from Play Store
-        </button>
-    </div>
-    <script src="script.js"></script>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
