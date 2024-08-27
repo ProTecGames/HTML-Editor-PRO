@@ -36,13 +36,13 @@ function displayProjects(projects) {
   projects.forEach(project => {
     const li = document.createElement('li');
     li.innerHTML = `
-      <div class="text-lg font-semibold text-gray-800"><i class="fas fa-folder"></i> ${project.FileName}</div>
-      <div class="text-sm text-gray-600"><i class="fas fa-file-alt"></i> ${project.File}</div>
-      <div class="text-sm text-gray-600"><i class="fas fa-user"></i> ${project.Username}</div>
-      <div class="text-sm text-gray-600"><i class="fas fa-download"></i> Downloads: ${project.Download}</div>
-      <div class="text-sm text-gray-600"><i class="fas fa-check-circle"></i> Verified: ${project.Verified ? 'Yes' : 'No'}</div>
-      <div class="text-sm text-gray-600"><i class="fas fa-id-badge"></i> UID: ${project.UID}</div>
-      <a href="${project.File}" class="block mt-2 bg-blue-500 text-white text-center px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600" target="_blank"><i class="fas fa-download"></i> Download</a>
+      <div class="project-info">
+        <div><span>File Name:</span> ${project.FileName}</div>
+        <div><span>Username:</span> ${project.Username}</div>
+        <div><span>Download Count:</span> ${project.Download}</div>
+        <div><span>Verified:</span> ${project.Verified ? 'Yes' : 'No'}</div>
+      </div>
+      <a href="${project.File}" class="block mt-2" target="_blank"><i class="fas fa-download"></i> Download</a>
     `;
     projectList.appendChild(li);
   });
