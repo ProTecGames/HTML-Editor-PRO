@@ -36,12 +36,13 @@ function displayProjects(projects) {
   projects.forEach(project => {
     const li = document.createElement('li');
     li.innerHTML = `
-      <div class="project-name"><i class="fas fa-folder"></i> ${project.FileName}</div>
-      <div class="file-name"><i class="fas fa-file-alt"></i> ${project.File}</div>
-      <div class="username"><i class="fas fa-user"></i> ${project.Username}</div>
-      <div class="downloads"><i class="fas fa-download"></i> Downloads: ${project.Download}</div>
-      <div class="verified"><i class="fas fa-check-circle"></i> Verified: ${project.Verified ? 'Yes' : 'No'}</div>
-      <div class="uid"><i class="fas fa-id-badge"></i> UID: ${project.UID}</div>
+      <div class="text-lg font-semibold text-gray-800"><i class="fas fa-folder"></i> ${project.FileName}</div>
+      <div class="text-sm text-gray-600"><i class="fas fa-file-alt"></i> ${project.File}</div>
+      <div class="text-sm text-gray-600"><i class="fas fa-user"></i> ${project.Username}</div>
+      <div class="text-sm text-gray-600"><i class="fas fa-download"></i> Downloads: ${project.Download}</div>
+      <div class="text-sm text-gray-600"><i class="fas fa-check-circle"></i> Verified: ${project.Verified ? 'Yes' : 'No'}</div>
+      <div class="text-sm text-gray-600"><i class="fas fa-id-badge"></i> UID: ${project.UID}</div>
+      <a href="${project.File}" class="block mt-2 bg-blue-500 text-white text-center px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600" target="_blank"><i class="fas fa-download"></i> Download</a>
     `;
     projectList.appendChild(li);
   });
@@ -49,7 +50,7 @@ function displayProjects(projects) {
 
 function displayError(message) {
   const projectList = document.getElementById('project-list');
-  projectList.innerHTML = `<p class="loading">${message}</p>`;
+  projectList.innerHTML = `<p class="loading text-center text-gray-600">${message}</p>`;
 }
 
 document.getElementById('load-projects').addEventListener('click', () => {
