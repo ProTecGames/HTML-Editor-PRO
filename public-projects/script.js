@@ -2,7 +2,6 @@ const SITE_KEY = '6LfmQTAqAAAAANucWGHhD7LDaYhH-UaP3xAdyKBG';
 
 async function fetchProjects(endpoint) {
   try {
-    // Ensure that reCAPTCHA is ready
     grecaptcha.ready(async () => {
       const token = await grecaptcha.execute(SITE_KEY);
 
@@ -12,7 +11,6 @@ async function fetchProjects(endpoint) {
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Fetched data:', data);
         if (data.status === "success" && Array.isArray(data.projects)) {
           displayProjects(data.projects);
         } else {
@@ -34,11 +32,11 @@ function displayProjects(projects) {
   projects.forEach(project => {
     const li = document.createElement('li');
     li.innerHTML = `
-      <div class="project-name">Project Name: ${project.FileName}</div>
-      <div class="file-name">File Name: ${project.File}</div>
-      <div class="downloads">Download Count: ${project.Download}</div>
-      <div class="verified">Verified: ${project.Verified ? 'Yes' : 'No'}</div>
-      <div class="uid">UID: ${project.UID}</div>
+      <div class="project-name"><i class="fas fa-folder"></i> ${project.FileName}</div>
+      <div class="file-name"><i class="fas fa-file-alt"></i> ${project.File}</div>
+      <div class="downloads"><i class="fas fa-download"></i> Downloads: ${project.Download}</div>
+      <div class="verified"><i class="fas fa-check-circle"></i> Verified: ${project.Verified ? 'Yes' : 'No'}</div>
+      <div class="uid"><i class="fas fa-user"></i> UID: ${project.UID}</div>
     `;
     projectList.appendChild(li);
   });
