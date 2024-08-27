@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Viewer</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://www.google.com/recaptcha/api.js?render=6LfmQTAqAAAAANucWGHhD7LDaYhH-UaP3xAdyKBG"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project List</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/kTcHU5HE8mBqdfJ5Pz8CzK5xns7fOJGh0TW6jGw4Nnt0a2v5xf3aBOwY/iT6w5X37xb9RaZ8d2+9w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-
-  <h1>Project Viewer</h1>
-
-  <div class="controls">
-    <button id="load-projects">Load Projects</button>
-    <button id="load-leaderboard">Load Leaderboard</button>
-    <input type="text" id="search-query" placeholder="Search projects...">
-    <button id="search-projects">Search</button>
-  </div>
-
-  <ul id="project-list"></ul>
-
-  <script src="script.js"></script>
+    <div class="container">
+        <header>
+            <h1>Public Projects</h1>
+            <div class="search-container">
+                <input type="text" id="search-query" placeholder="Search projects...">
+                <button id="search-projects"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="buttons-container">
+                <button id="load-projects"><i class="fas fa-list"></i> All Projects</button>
+                <button id="load-leaderboard"><i class="fas fa-trophy"></i> Leaderboard</button>
+            </div>
+        </header>
+        <main>
+            <ul id="project-list">
+                <p class="loading">Loading projects...</p>
+            </ul>
+        </main>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
