@@ -2,25 +2,50 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: #e9ecef;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
-  text-align: center;
   margin: 20px 0;
+  color: #333;
 }
 
 ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin: 0;
 }
 
 li {
   background: #fff;
-  padding: 10px;
+  padding: 15px;
   margin: 10px 0;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+li:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+li .project-id {
+  font-weight: bold;
+  color: #007bff;
+}
+
+li .file-name {
+  color: #555;
+}
+
+.loading {
+  font-size: 18px;
+  color: #007bff;
+  text-align: center;
+  margin: 20px;
 }
