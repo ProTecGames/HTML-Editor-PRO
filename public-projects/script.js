@@ -11,16 +11,17 @@ async function fetchProjects(endpoint) {
 
     if (response.ok) {
       const data = await response.json();
+      console.log('Fetched data:', data); // Log the data to see what’s being returned
       if (data.status === "success" && Array.isArray(data.projects)) {
         displayProjects(data.projects);
       } else {
-        displayError('Invalid response structure');
+        displayError(`Invalid response structure: ${JSON.stringify(data)}`);
       }
     } else {
-      displayError('Failed to fetch projects');
+      displayError(`Failed to fetch projects. Status: ${response.status}, StatusText: ${response.statusText}`);
     }
   } catch (error) {
-    displayError('Error fetching projects');
+    displayError(`Error fetching projects: ${error.message}`);
   }
 }
 
