@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
+  padding: 20px;
   background-color: #e9ecef;
   display: flex;
   flex-direction: column;
@@ -9,8 +9,34 @@ body {
 }
 
 h1 {
-  margin: 20px 0;
+  margin-bottom: 20px;
   color: #333;
+}
+
+.controls {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  margin-right: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
 }
 
 ul {
@@ -34,13 +60,15 @@ li:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-li .project-id {
+li .project-name {
   font-weight: bold;
   color: #007bff;
+  margin-bottom: 5px;
 }
 
-li .file-name {
+li .file-name, li .downloads, li .verified, li .uid {
   color: #555;
+  margin-bottom: 3px;
 }
 
 .loading {
