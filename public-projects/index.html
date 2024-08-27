@@ -4,29 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/kTcHU5HE8mBqdfJ5Pz8CzK5xns7fOJGh0TW6jGw4Nnt0a2v5xf3aBOwY/iT6w5X37xb9RaZ8d2+9w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://www.google.com/recaptcha/api.js?render=6LfmQTAqAAAAANucWGHhD7LDaYhH-UaP3xAdyKBG"></script>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Project Dashboard</h1>
-            <div class="search-container">
-                <input type="text" id="search-query" placeholder="Search projects...">
-                <button id="search-projects"><i class="fas fa-search"></i></button>
-            </div>
-            <div class="buttons-container">
-                <button id="load-projects"><i class="fas fa-list"></i> All Projects</button>
-                <button id="load-leaderboard"><i class="fas fa-trophy"></i> Leaderboard</button>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-6">
+        <header class="flex justify-between items-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-800">Project Dashboard</h1>
+            <div class="flex items-center space-x-4">
+                <input type="text" id="search-query" placeholder="Search projects..." class="px-4 py-2 border rounded-lg">
+                <button id="search-projects" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-600">
+                    <i class="fas fa-search"></i> Search
+                </button>
             </div>
         </header>
+        <div class="flex space-x-4 mb-6">
+            <button id="load-projects" class="bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-600 flex items-center space-x-2">
+                <i class="fas fa-list"></i>
+                <span>All Projects</span>
+            </button>
+            <button id="load-leaderboard" class="bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-yellow-600 flex items-center space-x-2">
+                <i class="fas fa-trophy"></i>
+                <span>Leaderboard</span>
+            </button>
+        </div>
         <main>
-            <ul id="project-list">
-                <p class="loading">Loading projects...</p>
+            <ul id="project-list" class="space-y-4">
+                <p class="loading text-center text-gray-600">Loading projects...</p>
             </ul>
         </main>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" integrity="sha512-KY4F3Y82mj/rO7G3zVau3cE1JXtXjTcTHV6Q0lK23IZ2kQW2e4EJHnDTIhVs5DZwdrPA8zFyDAFsAVdcsQj8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script.js"></script>
 </body>
 </html>
