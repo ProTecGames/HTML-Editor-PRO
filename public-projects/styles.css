@@ -1,79 +1,127 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
-  background-color: #e9ecef;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
 }
 
-h1 {
-  margin-bottom: 20px;
-  color: #333;
+.container {
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
 }
 
-.controls {
-  margin-bottom: 20px;
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-button {
-  padding: 10px 15px;
-  margin-right: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+header h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
-button:hover {
-  background-color: #0056b3;
+.search-container {
+    display: flex;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
 }
 
-input[type="text"] {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-right: 10px;
+.search-container input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  max-width: 900px;
-  margin: 0;
+.search-container button {
+    padding: 10px;
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
 }
 
-li {
-  background: #fff;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
+.buttons-container {
+    display: flex;
+    gap: 10px;
 }
 
-li:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+.buttons-container button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-li .project-name {
-  font-weight: bold;
-  color: #007bff;
-  margin-bottom: 5px;
+.buttons-container button i {
+    font-size: 18px;
 }
 
-li .file-name, li .downloads, li .verified, li .uid {
-  color: #555;
-  margin-bottom: 3px;
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#project-list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+#project-list li {
+    background: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#project-list li .project-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+#project-list li .file-name,
+#project-list li .downloads,
+#project-list li .verified,
+#project-list li .uid {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#project-list li .downloads i,
+#project-list li .verified i,
+#project-list li .uid i {
+    color: #007BFF;
 }
 
 .loading {
-  font-size: 18px;
-  color: #007bff;
-  text-align: center;
-  margin: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #555;
 }
