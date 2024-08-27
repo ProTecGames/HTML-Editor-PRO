@@ -6,11 +6,7 @@ async function fetchProjects() {
     const token = await grecaptcha.execute(SITE_KEY);
     
     const response = await fetch('https://htmleditorpro.deno.dev/projects', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
+      method: 'GET'
     });
 
     if (response.ok) {
