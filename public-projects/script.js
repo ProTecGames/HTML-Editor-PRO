@@ -3,25 +3,29 @@ const SITE_KEY = '6LfmQTAqAAAAANucWGHhD7LDaYhH-UaP3xAdyKBG';
 async function fetchProjects(endpoint) {
   try {
     grecaptcha.ready(async () => {
-      const token = await grecaptcha.execute(SITE_KEY);
+      try {
+        const token = await grecaptcha.execute(SITE_KEY);
 
-      const response = await fetch(`https://htmleditorpro.deno.dev/${endpoint}`, {
-        method: 'GET'
-      });
+        const response = await fetch(`https://htmleditorpro.deno.dev/${endpoint}`, {
+          method: 'GET'
+        });
 
-      if (response.ok) {
-        const data = await response.json();
-        if (data.status === "success" && Array.isArray(data.projects)) {
-          displayProjects(data.projects);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.status === "success" && Array.isArray(data.projects)) {
+            displayProjects(data.projects);
+          } else {
+            displayError(`Invalid response structure: ${JSON.stringify(data)}`);
+          }
         } else {
-          displayError(`Invalid response structure: ${JSON.stringify(data)}`);
+          displayError(`Failed to fetch projects. Status: ${response.status}, StatusText: ${response.statusText}`);
         }
-      } else {
-        displayError(`Failed to fetch projects. Status: ${response.status}, StatusText: ${response.statusText}`);
+      } catch (innerError) {
+        displayError(`Error fetching projects: ${innerError.message}`);
       }
     });
   } catch (error) {
-    displayError(`Error fetching projects: ${error.message}`);
+    displayError(`Error initializing reCAPTCHA: ${error.message}`);
   }
 }
 
@@ -34,9 +38,10 @@ function displayProjects(projects) {
     li.innerHTML = `
       <div class="project-name"><i class="fas fa-folder"></i> ${project.FileName}</div>
       <div class="file-name"><i class="fas fa-file-alt"></i> ${project.File}</div>
+      <div class="username"><i class="fas fa-user"></i> ${project.Username}</div>
       <div class="downloads"><i class="fas fa-download"></i> Downloads: ${project.Download}</div>
       <div class="verified"><i class="fas fa-check-circle"></i> Verified: ${project.Verified ? 'Yes' : 'No'}</div>
-      <div class="uid"><i class="fas fa-user"></i> UID: ${project.UID}</div>
+      <div class="uid"><i class="fas fa-id-badge"></i> UID: ${project.UID}</div>
     `;
     projectList.appendChild(li);
   });
