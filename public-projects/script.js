@@ -5,7 +5,7 @@ async function fetchProjects() {
     // Execute reCAPTCHA and get a token
     const token = await grecaptcha.execute(SITE_KEY);
     
-    const response = await fetch('https://htmleditorpro.deno.dev/projects?offset=0', {
+    const response = await fetch('https://htmleditorpro.deno.dev/projects', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
