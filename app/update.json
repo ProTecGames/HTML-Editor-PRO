@@ -2,9 +2,9 @@
   "Visibility": "VISIBLE",
   "Title": "Join on Play Store",
   "Description": "Explore more features and fast updates on Play Store version",
-  "MainTextButton": "Download Now",
+  "MainTextButton": "DOWNLOAD NOW",
   "Cancelable": true,
   "CancelButtonText": "Later",
   "DownloadLink": "https://play.google.com/store/apps/details?id=com.protecgames.htmleditorpro",
-  "Version": "13.3"
+  "Version": "13.2"
 }
