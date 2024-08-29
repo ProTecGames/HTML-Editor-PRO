@@ -1,10 +1,10 @@
 {
-  "Visibility": "INVISIBLE",
-  "Title": "Cloud Coding - Available Now",
-  "Description": "Start making projects right in cloud now! No need to save any file all online.",
-  "MainTextButton": "UPDATE",
+  "Visibility": "VISIBLE",
+  "Title": "Join on Play Store",
+  "Description": "Explore more features and fast updates on Play Store version",
+  "MainTextButton": "Download Now",
   "Cancelable": true,
   "CancelButtonText": "Later",
-  "DownloadLink": "https://html-editor-pro.vercel.app/pages/download.html",
-  "Version": "12.4"
+  "DownloadLink": "https://play.google.com/store/apps/details?id=com.protecgames.htmleditorpro",
+  "Version": "13.3"
 }
