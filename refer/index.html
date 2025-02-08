@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referral Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Referral Dashboard</h1>
+        <div id="inputSection">
+            <p>Enter your referral code or create a new one:</p>
+            <input type="text" id="referralCode" placeholder="Enter referral code">
+            <button onclick="showDashboard()">Show My Dashboard</button>
+            <button onclick="createNewCode()">Create New Code</button>
+        </div>
+        <div id="dashboard" class="hidden">
+            <h2>Your Dashboard</h2>
+            <p>Referral Code: <span id="codeDisplay"></span></p>
+            <p>Number of Referrals: <span id="referralCount">0</span></p>
+            <p>Balance: Rs. <span id="balance">0</span></p>
+            <button onclick="resetCount()">Reset Referral Count</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
