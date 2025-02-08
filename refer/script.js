@@ -1,4 +1,4 @@
-/* script.js */
+/* Modernized script.js with animated modals */
 const serverUrl = "https://pws-0h89.onrender.com";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function showDashboard() {
     const code = document.getElementById("referralCode").value.trim();
     if (!code) {
-        alert("Please enter a referral code.");
+        showErrorModal("Please enter a referral code.");
         return;
     }
 
@@ -27,10 +27,10 @@ function showDashboard() {
                 document.getElementById("dashboard").classList.remove("hidden");
                 document.getElementById("inputSection").classList.add("hidden");
             } else {
-                alert("Invalid referral code.");
+                showErrorModal("Invalid referral code.");
             }
         })
-        .catch(error => console.error("Error fetching referral count:", error));
+        .catch(error => showErrorModal("Error fetching referral count. Please try again later."));
 }
 
 function createNewCode() {
@@ -38,10 +38,10 @@ function createNewCode() {
     fetch(`${serverUrl}/refer/save?code=${newCode}`)
         .then(response => response.json())
         .then(data => {
-            alert(`New referral code created: ${data.code}`);
+            showSuccessModal(`New referral code created: ${data.code}`);
             document.getElementById("referralCode").value = data.code;
         })
-        .catch(error => console.error("Error creating referral code:", error));
+        .catch(error => showErrorModal("Error creating referral code. Please try again later."));
 }
 
 function resetCount() {
@@ -49,13 +49,34 @@ function resetCount() {
     fetch(`${serverUrl}/refer/reset?code=${code}`)
         .then(response => response.json())
         .then(data => {
-            alert(data.message);
+            showSuccessModal(data.message);
             referralCountDisplay.textContent = "0";
             balanceDisplay.textContent = "0";
         })
-        .catch(error => console.error("Error resetting referral count:", error));
+        .catch(error => showErrorModal("Error resetting referral count. Please try again later."));
 }
 
 function generateCode() {
     return Math.random().toString(36).substring(2, 7).toUpperCase();
+}
+
+function showErrorModal(message) {
+    showModal(message, "error-modal");
+}
+
+function showSuccessModal(message) {
+    showModal(message, "success-modal");
+}
+
+function showModal(message, type) {
+    const modal = document.createElement("div");
+    modal.className = `modal ${type} show`;
+    modal.innerHTML = `<div class='modal-content'><p>${message}</p><button onclick='closeModal(this)'>OK</button></div>`;
+    document.body.appendChild(modal);
+}
+
+function closeModal(button) {
+    const modal = button.closest(".modal");
+    modal.classList.remove("show");
+    setTimeout(() => modal.remove(), 300);
 }
