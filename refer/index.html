@@ -7,24 +7,24 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <main class="container">
-        <h1>Referral Dashboard</h1>
-        <section id="inputSection">
-            <p>Enter your referral code or create a new one:</p>
-            <form>
-                <input type="text" id="referralCode" placeholder="Enter referral code">
-                <button type="button" onclick="dashboardManager.showDashboard()">Show My Dashboard</button>
-                <button type="button" onclick="dashboardManager.createNewCode()">Create New Code</button>
-            </form>
-        </section>
-        <section id="dashboard" class="hidden">
-            <h2>Your Dashboard</h2>
-            <p>Referral Code: <span id="codeDisplay"></span></p>
-            <p>Number of Referrals: <span id="referralCount">0</span></p>
-            <p>Balance: Rs. <span id="balance">0</span></p>
-            <button type="button" onclick="dashboardManager.resetCount()">Reset Referral Count</button>
-        </section>
-    </main>
+    <div class="container">
+        <div id="inputSection" class="input-section">
+            <h2>Referral System</h2>
+            <input type="text" id="referralCode" placeholder="Enter or generate referral code">
+            <button onclick="showDashboard()">Show My Dashboard</button>
+            <button onclick="createNewCode()">Generate New Code</button>
+        </div>
+
+        <div id="dashboard" class="dashboard hidden">
+            <h2>My Dashboard</h2>
+            <p><strong>Referral Code:</strong> <span id="codeDisplay"></span></p>
+            <p><strong>Referrals:</strong> <span id="referralCount">0</span></p>
+            <p><strong>Balance:</strong> Rs. <span id="balance">0</span></p>
+            <button onclick="resetCount()">Reset Count</button>
+            <button onclick="location.reload()">Back</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,98 +1,105 @@
-/* Material 3 variables */
-:root {
-    --md-sys-color-primary: #3a1c71;
-    --md-sys-color-on-primary: #ffffff;
-    --md-sys-color-secondary: #d76d77;
-    --md-sys-color-on-secondary: #ffffff;
-    --md-sys-color-tertiary: #ffaf7b;
-    --md-sys-color-on-tertiary: #000000;
-    --md-sys-color-error: #ff4b2b;
-    --md-sys-color-on-error: #ffffff;
-    --md-sys-color-background: #ffffff;
-    --md-sys-color-on-background: #000000;
-    --md-sys-color-surface: #ffffff;
-    --md-sys-color-on-surface: #000000;
-    --md-sys-elevation: 0 2px 4px rgba(0, 0, 0, 0.1);
-    --md-sys-shape-corner-radius: 16px;
-    --md-sys-transition-duration: 0.2s;
-    --md-sys-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--md-sys-color-background);
-    color: var(--md-sys-color-on-background);
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-  }
-  
-  .container {
-    background-color: var(--md-sys-color-surface);
-    padding: 2.5rem;
-    border-radius: var(--md-sys-shape-corner-radius);
-    box-shadow: var(--md-sys-elevation);
-    width: 400px;
-    transition: transform var(--md-sys-transition-duration) var(--md-sys-transition-timing-function);
-  }
-  
-  .container:hover {
-    transform: translateY(-5px);
-  }
-  
-  input {
-    width: 90%;
-    padding: 1rem;
-    margin: 0.8rem 0;
-    border: 2px solid transparent;
-    border-radius: var(--md-sys-shape-corner-radius);
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--md-sys-color-on-surface);
-    font-size: 1rem;
-    transition: all var(--md-sys-transition-duration) var(--md-sys-transition-timing-function);
-  }
-  
-  input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-  }
-  
-  input:focus {
-    outline: none;
-    border-color: rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  
-  button {
-    width: 90%;
-    padding: 1rem;
-    margin: 1.5rem 0;
-    border: none;
-    border-radius: var(--md-sys-shape-corner-radius);
-    background-image: linear-gradient(to right, var(--md-sys-color-primary), var(--md-sys-color-secondary));
-    color: var(--md-sys-color-on-primary);
-    font-size: 1rem;
+    height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.input-section, .dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: #1E1E1E;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.hidden {
+    display: none;
+}
+
+h2 {
+    text-align: center;
     font-weight: 600;
+}
+
+input {
+    background: #2A2A2A;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+button {
+    background: #BB86FC;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all var(--md-sys-transition-duration) var(--md-sys-transition-timing-function);
-  }
-  
-  button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 480px) {
-    .container {
-      width: 90%;
-      padding: 1.5rem;
-    }
-    
-    input, button {
-      width: 100%;
-    }
-  }
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #9b66e4;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: #2A2A2A;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal.visible {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    text-align: center;
+}
+
+.modal-content p {
+    margin-bottom: 10px;
+}
+
+.modal button {
+    background: #03DAC5;
+    padding: 10px;
+    width: 100%;
+}
+
+.modal button:hover {
+    background: #02c0a9;
+}
