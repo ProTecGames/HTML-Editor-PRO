@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  height: 100%;
+  overflow-x: hidden;
+  color: #fff;
+  background: #0e0b1d;
+}
+
+canvas#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+header {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: transparent;
+}
+
+header .content {
+  max-width: 800px;
+  padding: 2rem;
+  animation: fadeIn 2s ease;
+}
+
+header h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+header p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  color: #aaa;
+}
+
+.btn {
+  padding: 0.8rem 2rem;
+  background: #9f58ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #7e30ff;
+}
+
+main {
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+section {
+  margin-bottom: 4rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+ul, ol {
+  margin-left: 1.5rem;
+  color: #ddd;
+}
+
+a {
+  color: #9f58ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.note {
+  background: #2c2154;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-left: 5px solid #ffc107;
+}
+
+.free {
+  color: #00ff9f;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  background: transparent;
+  color: #666;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
