@@ -1,59 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hackathon 2025</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hackathon with Viber AI</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <canvas id="threejs-canvas"></canvas>
+  <canvas id="bg"></canvas>
 
-  <header class="hero">
-    <div class="content">
-      <img src="https://raw.githubusercontent.com/ProTecGames/HTML-Editor-PRO/refs/heads/main/assets/hackathon2025.png" alt="Hackathon Logo" class="logo">
-      <h1>Hackathon 2025</h1>
-      <p>Innovate. Create. Inspire.</p>
-      <a href="#register" class="btn">Register Now</a>
-    </div>
-  </header>
+  <div class="container">
+    <header>
+      <h1>Online Hackathon</h1>
+      <p>Show off your coding vibes with <span>Viber AI</span></p>
+      <a href="#participate" class="btn">Join Now</a>
+    </header>
 
-  <section id="about" class="section">
-    <div class="container">
-      <h2>About the Hackathon</h2>
-      <p>Join us for an exciting journey where creativity meets technology. Collaborate with like-minded individuals and showcase your skills.</p>
-    </div>
-  </section>
+    <main>
+      <section class="card glass" id="participate">
+        <h2>How to Participate</h2>
+        <ol>
+          <li>Use our <strong>Android app</strong> to code using <strong>Viber AI</strong>.</li>
+          <li>Upload your project to <strong>GitHub</strong> and deploy with <strong>Vercel</strong>.</li>
+          <li>Post a video showing how you used Viber AI and tag us:</li>
+        </ol>
+        <ul class="socials">
+          <li><a href="https://instagram.com/protecstudioofficial">@protecstudioofficial</a> (Instagram)</li>
+          <li><a href="https://linkedin.com/company/protecgames">@protecgames</a> (LinkedIn)</li>
+          <li><a href="https://twitter.com/htmleditorpro">@htmleditorpro</a> (Twitter)</li>
+          <li><a href="https://youtube.com/@protecgamesindia">@protecgamesindia</a> (YouTube)</li>
+        </ul>
+        <p>Then fill out the <a href="https://forms.gle/NiBhvPmsJFFiryBu6" target="_blank">Google Form</a> to get temporary access to our premium plan.</p>
+      </section>
 
-  <section id="prizes" class="section">
-    <div class="container">
-      <h2>Prizes</h2>
-      <ul>
-        <li><strong>1st Place:</strong> Printed T-Shirt</li>
-        <li><strong>2nd Place:</strong> Printed Bottle</li>
-        <li><strong>3rd Place:</strong> Printed Mug</li>
-        <li><strong>Runner-ups:</strong> Stickers</li>
-      </ul>
-      <p>All participants will receive a certificate of participation.</p>
-    </div>
-  </section>
+      <section class="card glass">
+        <h2>Prizes</h2>
+        <ul>
+          <li><strong>1st:</strong> Printed T-Shirt</li>
+          <li><strong>2nd:</strong> Printed Bottle</li>
+          <li><strong>3rd:</strong> Printed Mug</li>
+          <li><strong>Runner-ups:</strong> Stickers</li>
+        </ul>
+        <p>All participants receive a <strong>Certificate</strong> for free!</p>
+        <p class="highlight">All prizes are completely free for winners!</p>
+        <a class="btn" href="https://forms.gle/NiBhvPmsJFFiryBu6" target="_blank">Register Now</a>
+      </section>
+    </main>
 
-  <section id="register" class="section">
-    <div class="container">
-      <h2>Register Now</h2>
-      <p>Fill out the form to secure your spot in the hackathon.</p>
-      <a href="https://forms.gle/NiBhvPmsJFFiryBu6" target="_blank" class="btn">Register Here</a>
-    </div>
-  </section>
+    <footer>
+      <p>&copy; 2025 Protec Games | All rights reserved.</p>
+    </footer>
+  </div>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 ProTec Games . All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
