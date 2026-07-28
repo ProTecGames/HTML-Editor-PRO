@@ -3,7 +3,7 @@
   "Title": "30 Days Free Premium",
   "Description": "Claim your 30 days premium and unlock all premium features without limits all without any payment details.",
   "MainTextButton": "Claim Now",
-  "Cancelable": true,
+  "Cancelable": false,
   "CancelButtonText": "Ignore Offer",
   "DownloadLink": "https://account.softbridgelabs.in/claim",
   "Version": "15.2"
