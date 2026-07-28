@@ -1,10 +1,10 @@
 {
   "Visibility": "VISIBLE",
-  "Title": "30 Days Free Premium",
-  "Description": "Claim your 30 days premium and unlock all premium features without limits all without any payment details.",
-  "MainTextButton": "Claim Now",
-  "Cancelable": false,
-  "CancelButtonText": "Ignore Offer",
-  "DownloadLink": "https://account.softbridgelabs.in/claim",
-  "Version": "15.2"
+  "Title": "New Update Available",
+  "Description": "Update your app to lastest version for new and fresh UI.",
+  "MainTextButton": "Update",
+  "Cancelable": true,
+  "CancelButtonText": "Later",
+  "DownloadLink": "https://play.google.com/store/apps/details?id=com.protecgames.htmleditorpro",
+  "Version": "16.0.1"
 }
